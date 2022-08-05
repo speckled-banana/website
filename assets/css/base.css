@@ -1,0 +1,16 @@
+:root {
+  --primary: #fff648;
+  --secondary: #fffa9d;
+  --dark: #0c0029;
+  --dark-opaque: rgba(12, 0, 41, 0.85);
+  --light-text: rgb(238, 238, 238);
+  --xs: 599px;
+  --sm: 1023px;
+  --md: 1439px;
+  --lg: 1919px;
+  --xl: 1920px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --header-height: 70px;
+  --header-height-lg: 90px;
+}

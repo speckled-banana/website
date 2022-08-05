@@ -1,0 +1,88 @@
+@import 'base.css';
+
+/* TABLET & ABOVE */
+
+@media (min-width: 768px) {
+  /* HEADER & NAV */
+
+  header {
+    /* height: var(--header-height-lg); */
+    padding: 0 40px;
+  }
+
+  .header-content {
+    height: var(--header-height-lg);
+  }
+
+  .brand {
+    margin: 0;
+  }
+
+  .brand .logo {
+    font-size: 2rem;
+  }
+
+  .brand img {
+    margin-left: -28px;
+  }
+
+  nav {
+    display: flex;
+    position: relative;
+    padding: 0;
+    /* justify-content: flex-end; */
+    /* align-items: center; */
+    margin: 0;
+    height: var(--header-height);
+    flex-grow: 1;
+  }
+  nav menu {
+    /* display: inline-block; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 30vw;
+    height: 100%;
+    background-color: transparent;
+    padding: 10px 0 0;
+  }
+
+  nav menu li {
+    display: inline;
+    padding: 0;
+  }
+
+  nav menu li:not(:last-child) {
+    padding-right: 30px;
+  }
+
+  .side-menu,
+  .burger {
+    display: none;
+  }
+
+  /* main section {
+    width: 100%;
+   max-width: 800px;
+  } */
+
+  /* HERO */
+
+  main section.hero {
+    margin-top: calc(var(--header-height) + 2rem);
+  }
+
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+}
+
+/* SMALL LAPTOP & ABOVE */
+
+@media (min-width: 1024px) {
+  /* HERO */
+
+  .hero h1 {
+    font-size: 5rem;
+  }
+}
