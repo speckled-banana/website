@@ -26,7 +26,7 @@
     margin-left: -28px;
   }
 
-  nav {
+  header nav {
     display: flex;
     position: relative;
     padding: 0;
@@ -36,7 +36,7 @@
     height: var(--header-height);
     flex-grow: 1;
   }
-  nav menu {
+  header nav menu {
     /* display: inline-block; */
     display: flex;
     justify-content: flex-end;
@@ -47,12 +47,12 @@
     padding: 10px 0 0;
   }
 
-  nav menu li {
+  header nav menu li {
     display: inline;
     padding: 0;
   }
 
-  nav menu li:not(:last-child) {
+  header nav menu li:not(:last-child) {
     padding-right: 30px;
   }
 
@@ -65,6 +65,16 @@
     width: 100%;
    max-width: 800px;
   } */
+
+  main .services-container {
+    flex-direction: row;
+    flex-basis: 1fr 1fr;
+    justify-content: space-between;
+    column-gap: 2rem;
+  }
+  main .services-container section {
+    width: 50%;
+  }
 
   /* HERO */
 
