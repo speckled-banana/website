@@ -22,6 +22,10 @@
       rel="stylesheet"
       href="./assets/css/styles.css"
     />
+    <script
+      src="./assets/js/sb.js"
+      defer
+    ></script>
     <title>Speckled Banana - Software & Technology Consultancy</title>
 
     <!-- GRAPH -->
@@ -131,7 +135,10 @@
         </nav>
       </div>
     </header>
-    <main class="container">
+    <main
+      class="container"
+      id="content"
+    >
       <div class="bg">
         <img
           class="speckle-bg"
@@ -140,72 +147,89 @@
       </div>
 
       <section class="hero border-gradient">
-        <h1>Technology consultancy with principles</h1>
-        <!-- <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem
-          magnam cumque. Culpa in eaque quibusdam corporis natus, optio officia
-          ducimus soluta molestias laboriosam porro pariatur dolorem suscipit
-          odio harum?
-        </p> -->
+        <!-- <h1>Technology consultancy with principles</h1> -->
+        <h1>
+          We work with organisations making a difference to deliver
+          <i>impactful</i>
+          projects<span class="period">.</span>
+        </h1>
       </section>
-      <div class="services-container">
-        <section class="services">
-          <h2>What we <i>can</i> help with</h2>
-          <ul>
-            <li class="card"><span>Software development</span></li>
-            <li class="card"><span>Database design</span></li>
+      <section class="services">
+        <h2 class="who">
+          Speckled Banana is a technology consultancy and fixed term staffing
+          provider.
+        </h2>
+        <p>
+          We have over
+          <a href="./about-speckled-banana.html">15 years experience</a>
+          working on varied projects across a number of industries and use that
+          experience to help organisations that align with
+          <a href="./values-and-principles.html">our values</a>.
+        </p>
+        <hr />
+        <div class="services-container">
+          <div class="services">
+            <h3>What we <i>can</i> help with</h3>
 
-            <li class="card"><span>Training</span></li>
-            <li class="card"><span>One Off Projects</span></li>
-            <li class="card"><span>Ficed term Contracts</span></li>
-            <li class="card"><span>Project Outsroucing -</span></li>
-            <li class="card"><span>Planning & Design</span></li>
-          </ul>
-        </section>
-        <section class="values">
-          <h2>What we <i>can't</i> help with</h2>
-          <p>
-            We won't take on projects or clients that aren't aligned with our
-            <a href="./values-and-principles.html">values and principles</a>:
-          </p>
-          <ul>
-            <li class="card">
-              <span
-                >Anything invading user privacy; google analytics, facebook
-                pixel etc.</span
-              >
-            </li>
-            <li class="card">
-              <span
-                >Any designs utilising
-                <a href="https://www.deceptive.design/"
-                  >'dark' design patterns</a
-                ></span
-              >
-            </li>
+            <ul>
+              <li class="card"><span>Software development</span></li>
+              <li class="card">
+                <span>Database design and administration</span>
+              </li>
+              <li class="card">
+                <span>Data analysis, dashboarding & business intelligence</span>
+              </li>
+              <li class="card">
+                <span>Project scoping and requirements analysis</span>
+              </li>
+              <li class="card"><span>Training</span></li>
+              <li class="card"><span>Fixed term contracts</span></li>
+              <li class="card"><span>Project outsourcing</span></li>
+              <li class="card"><span>Digital strategy</span></li>
+            </ul>
+          </div>
+          <hr class="mobile-only" />
+          <div class="values">
+            <h3>What we <i>won't</i> help with</h3>
+            <ul>
+              <li class="card">
+                <span>
+                  Projects for businesses that operate in sectors that have a
+                  negative impact on the planet
+                </span>
+              </li>
+              <li class="card">
+                <span
+                  >Anything invading user privacy; google analytics, facebook
+                  pixel etc.</span
+                >
+              </li>
+              <li class="card">
+                <span>
+                  Projects implementing
+                  <a href="https://www.deceptive.design/"
+                    >'dark' design patterns</a
+                  ></span
+                >
+              </li>
 
-            <li class="card">
-              <span>
-                Businesses that have a negative impact on the planet
-              </span>
-            </li>
-
-            <li class="card">
-              <span
-                >Crypto, day trading, get rich quick or anything else
-                scammy</span
-              >
-            </li>
-          </ul>
-        </section>
-      </div>
+              <li class="card">
+                <span
+                  >Crypto, day trading, get rich quick or anything else
+                  scammy</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <section class="pro-bono">
         <h2>Non Profit? We Love Helping Out Good Causes</h2>
         <p>
           We have a desire to use our skills to do some good in the world. For
-          that reason we can often offer pro bono / free of charge consultancy
-          hours to non-profits and community projects that align with our
-          values.
+          that reason we can often offer
+          <i>pro bono / free of charge</i> consultancy hours to non-profits and
+          community projects that align with our values.
         </p>
         <p>
           If you have ideas for websites, apps, back-end systems or other high
@@ -216,19 +240,22 @@
       <section class="contact column">
         <h2>Contact Speckled Banana</h2>
         <form
-          action=""
+          onsubmit="sendContactForm()"
           class="contact column"
+          id="contact-form"
         >
           <label for="email">Your email</label>
           <input
             type="email"
             name="email"
             id="contact-email"
+            required
           />
           <label for="message">Message</label>
           <textarea
             name="message"
             id="contact-message"
+            required
           ></textarea>
           <label
             for="info"
@@ -254,11 +281,45 @@
           />
           <button type="submit">Send Message</button>
         </form>
+        <div class="contact-form-message">Message goes here</div>
       </section>
     </main>
-    <footer>
-      <nav></nav>
-      <section class="site-map"></section>
+    <footer class="">
+      <div class="footer-content container">
+        <div class="brand row">
+          <a
+            href="https://speckledbanana.com"
+            title="Speckled Banana Home Page"
+          >
+            <span class="logo">SPECKLED</span>
+            <img
+              alt="The Speckled Banana logo: A company logo with SPECKLED as text and a yellow paint splatter motif with a a banana shape cut out on right."
+              src="./assets/img/SpeckledSplatBright.png"
+              title="The Speckled Banana Logo"
+            />
+          </a>
+        </div>
+        <hr />
+        <div class="links">
+          <nav>
+            <!-- Menu -->
+            <menu class="column">
+              <li><a href="./values-and-principles.html"> Our Values </a></li>
+              <li><a href="./services.html"> Services </a></li>
+              <li><a href="./pro-bono.html"> Pro Bono </a></li>
+              <li><a href="./contact.html"> Contact </a></li>
+            </menu>
+          </nav>
+          <div>info@speckledbanana.com</div>
+        </div>
+
+        <span>Copyright ©2022 Speckled Banana Ltd. </span>
+        <div class="company-details column">
+          <span>Company registration number: 13582619</span>
+          <span>VAT registration number: 389 3516 52 </span>
+          <span>ICO Registration number: ZB267315</span>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

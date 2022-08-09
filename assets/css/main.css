@@ -4,9 +4,13 @@
 
 body {
   background-color: var(--dark);
-
   color: var(--light-text);
   font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-size: 1.1rem;
+}
+
+body.scrolled {
+  background-color: var(--primary);
 }
 
 h1,
@@ -20,6 +24,7 @@ h6 {
 
 a {
   color: var(--primary);
+  text-decoration: none;
 }
 
 ul {
@@ -28,10 +33,22 @@ ul {
 
 li {
   list-style-type: none;
+  font-size: 1rem;
 }
 
 p {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  /* text-align: justify; */
+  /* text-justify: inter-word; */
+}
+
+hr {
+  margin: 2rem 0;
+}
+
+.period {
+  margin-left: 0.25rem;
+  color: var(--secondary);
 }
 
 /* LAYOUT */
@@ -84,15 +101,15 @@ header {
   left: 0;
   right: 0;
   /* width: 100%; */
-  /* background: var(--dark-opaque-lighter); */
-  background-image: linear-gradient(
+  background: var(--dark-opaque);
+  /* background-image: linear-gradient(
     to bottom right,
     var(--dark-opaque) 70%,
     var(--primary)
-  );
+  ); */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(247, 248, 248, 0.1);
+  border-bottom: 1px solid var(--primary);
   padding: 0 20px;
   /* width: 100%; */
 }
@@ -252,10 +269,15 @@ main section {
   padding: 1.2rem 0.75rem;
   margin: 1rem 0;
   border: 1px solid var(--secondary);
+
   border-radius: 10px;
+
+  /* -webkit-box-shadow: 10px 10px 1px var(--primary);
+  -moz-box-shadow: 10px 10px 1px var(--primary);
+  box-shadow: 10px 10px 1px var(--primary); */
   text-align: left;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   /* width: 100vw; */
   /* grid-column: 1 / 12; */
 }
@@ -272,11 +294,11 @@ main section li {
   /* position: relative; */
 }
 
-main section.services li::before {
+main div.services li::before {
   content: '✅ ';
 }
 
-main section.values li::before {
+main div.values li::before {
   content: '❌ ';
 }
 main section li::before {
@@ -302,13 +324,13 @@ main section.hero {
   /* align-items: center; */
   margin-top: calc(var(--header-height) + 1rem);
   background-color: var(--dark);
-  text-align: center;
-  padding: 5rem 0;
+  /* text-align: center; */
+  padding: 2rem 0.75rem;
 }
 
 .hero h1 {
   z-index: 500;
-  font-size: 8vw;
+  font-size: 7.5vw;
   text-transform: uppercase;
   /* padding: 0 4em; */
   /* border-radius: 20px; */
@@ -322,6 +344,24 @@ main section.hero {
   margin: 0;
 
   /* padding-top: 100px 0; */
+}
+
+.tag-line {
+  background: var(--secondary-opaque);
+  /* box-shadow: 15px 0 0 0 var(--secondary); */
+  color: var(--dark);
+  /* margin: 0 3rem 3rem; */
+  padding: 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  /* text-align: center; */
+}
+
+.who {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  /* color: var(--secondary); */
 }
 
 li.card h3 {
@@ -344,7 +384,7 @@ li.card h3 {
   --webkit-filter: invert(100%) sepia(80%) saturate(20) hue-rotate(-330deg)
     brightness(300%) contrast(90%); */
   object-fit: cover;
-  opacity: 0.4;
+  /* opacity: 0.4; */
 }
 
 /* CONTACT FORM */
@@ -356,20 +396,71 @@ main section.contact {
   justify-content: center;
   align-items: center;
   background: var(--dark);
+  margin-bottom: 3rem;
+}
+
+.contact-form-message {
+  display: none;
+}
+
+.contact form.success {
+  display: none;
+}
+
+.contact form.success ~ .contact-form-message {
+  display: block;
 }
 
 .contact form input,
 .contact form textarea {
+  margin-top: 0.25rem;
   margin-bottom: 1rem;
 }
 
-.contact-info {
-  display: none;
+.contact form textarea {
+  min-height: 100px;
 }
 
-footer {
-  padding: 0 20px;
+.contact button {
+  background-color: var(--secondary);
+  color: var(--dark);
+  padding: 1rem;
+  border-radius: 10px;
 }
+
+/* .contact-info {
+  display: none;
+} */
+
+footer {
+  border-top: 1px solid var(--primary);
+  padding: 1.5rem 20px 0;
+  background-color: var(--dark);
+  /* padding-top: 1.5rem; */
+  /* justify-content: center;
+  align-content: center;
+  align-items: center; */
+}
+
+footer-content {
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+footer .brand {
+  /* margin: 0 auto; */
+  height: 60px;
+}
+
+footer .brand .logo {
+  font-size: 1.2rem;
+}
+
+footer .brand img {
+  margin-left: -18px;
+}
+
 footer nav menu {
   padding: 0;
   justify-content: space-between;
@@ -383,4 +474,8 @@ footer nav menu a {
 footer nav menu li {
   /* width: %; */
   padding-bottom: 1rem;
+}
+
+footer .company-details {
+  font-size: 0.6rem;
 }

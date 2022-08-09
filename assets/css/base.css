@@ -1,8 +1,10 @@
 :root {
   --primary: #fff648;
   --secondary: #fffa9d;
+  --secondary-opaque: rgba(255, 250, 157, 0.9);
   --dark: #0c0029;
-  --dark-opaque: rgba(12, 0, 41, 0.7);
+  --dark-lighter: #130339;
+  --dark-opaque: rgba(12, 0, 41, 0.8);
   --dark-opaque-lighter: rgba(36, 30, 49, 0.7);
   --light-text: rgb(238, 238, 238);
   --xs: 599px;
