@@ -22,6 +22,15 @@
       rel="stylesheet"
       href="./assets/css/styles.css"
     />
+    <!-- <link
+      rel="preload"
+      as="image"
+      href="/assets/img/splatter.svg"
+    /> -->
+    <script
+      src="./assets/js/sb.js"
+      defer
+    ></script>
     <title>Speckled Banana - Software & Technology Consultancy</title>
 
     <!-- GRAPH -->
@@ -92,43 +101,66 @@
 
   <body>
     <header class="">
-      <div class="header-content container row space-between">
-        <!-- Brand / logo -->
-        <div class="brand row">
-          <a
-            href="https://speckledbanana.com"
-            title="Speckled Banana Home Page"
-          >
-            <span class="logo">SPECKLED</span>
-            <img
-              alt="The Speckled Banana logo: A company logo with SPECKLED as text and a yellow paint splatter motif with a a banana shape cut out on right."
-              src="./assets/img/SpeckledSplatBright.png"
-              title="The Speckled Banana Logo"
-            />
-          </a>
+      <div class="header-content container column space-between">
+        <div class="top-row row">
+          <!-- Brand / logo -->
+          <div class="brand row">
+            <a
+              href="https://speckledbanana.com"
+              title="Speckled Banana Home Page"
+            >
+              <span class="logo">SPECKLED</span>
+              <img
+                alt="The Speckled Banana logo: A company logo with SPECKLED as text and a yellow paint splatter motif with a a banana shape cut out on right."
+                src="./assets/img/SpeckledSplatBright.png"
+                title="The Speckled Banana Logo"
+              />
+            </a>
+          </div>
+          <!-- Mobile burger -->
+          <!-- <div class="burger"> -->
+          <input
+            class="side-menu"
+            type="checkbox"
+            id="side-menu"
+          />
+          <label
+            class="burger"
+            for="side-menu"
+            ><span class="burger-line"> </span
+          ></label>
+          <!-- </div> -->
+          <nav>
+            <hr />
+            <!-- Menu -->
+            <menu class="nav">
+              <li>
+                <a href="./values-and-principles.html">Our Values</a
+                ><span class="period">.</span>
+              </li>
+              <li>
+                <a href="./services.html">Services</a
+                ><span class="period">.</span>
+              </li>
+              <li>
+                <a href="./pro-bono.html">Pro Bono</a
+                ><span class="period">.</span>
+              </li>
+              <li>
+                <a href="./contact-us.html">Contact Us</a
+                ><span class="period">.</span>
+              </li>
+            </menu>
+          </nav>
         </div>
-        <!-- Mobile burger -->
-        <!-- <div class="burger"> -->
-        <input
-          class="side-menu"
-          type="checkbox"
-          id="side-menu"
-        />
-        <label
-          class="burger"
-          for="side-menu"
-          ><span class="burger-line"> </span
-        ></label>
-        <!-- </div> -->
-        <nav>
-          <!-- Menu -->
-          <menu class="nav">
-            <li><a href="./values-and-principles.html"> Our Values </a></li>
-            <li><a href="./services.html"> Services </a></li>
-            <li><a href="./pro-bono.html"> Pro Bono </a></li>
-            <li><a href="./contact.html"> Contact </a></li>
-          </menu>
-        </nav>
+        <div class="bottom-row">
+          <h1 class="tag-line">
+            Technology consultancy and fixed term staffing provider<span
+              class="period"
+              >.</span
+            >
+          </h1>
+        </div>
       </div>
     </header>
     <main>
@@ -229,23 +261,53 @@
         <div><span>Gmail</span><span>Protonmail</span></div>
       </section>
     </main>
-    <footer class="container">
-      <hr />
-      <nav>
-        <!-- Menu -->
-        <menu class="row">
-          <li><a href="./values-and-principles.html"> Our Values </a></li>
-          <li><a href="./services.html"> Services </a></li>
-          <li><a href="./pro-bono.html"> Pro Bono </a></li>
-          <li><a href="./contact.html"> Contact </a></li>
-        </menu>
-      </nav>
-      <div class="company-details">
-        <span>Copyright ©2022 Speckled Banana Ltd. All Rights Reserved. </span>
-        <span
-          >Company registration number: 9999999, VAT registration number:
-          9999999, ICO Registration number: 99999999</span
-        >
+    <footer class="">
+      <div class="footer-content container">
+        <div class="brand row">
+          <a
+            href="https://speckledbanana.com"
+            title="Speckled Banana Home Page"
+          >
+            <span class="logo">SPECKLED</span>
+            <img
+              alt="The Speckled Banana logo: A company logo with yellow paint splatter motif and a banana shape cut out of the middle."
+              src="./assets/img/SpeckledSplatBright.png"
+              title="The Speckled Banana Logo"
+            />
+          </a>
+        </div>
+        <hr />
+        <div class="links">
+          <nav>
+            <!-- Menu -->
+            <menu class="column">
+              <li><a href="./values-and-principles.html">Our Values</a></li>
+              <li><a href="./services.html">Services</a></li>
+              <li><a href="./pro-bono.html">Pro Bono</a></li>
+              <li><a href="./contact-us.html">Contact Us</a></li>
+              <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+            </menu>
+          </nav>
+          <div>
+            <ul class="li">
+              <a href="mailto:hello@speckledbanana.com"
+                >hello@speckledbanana.com</a
+              >
+            </ul>
+            <ul class="li">
+              +44 (0)208 0584946
+            </ul>
+            <ul class="li"></ul>
+          </div>
+        </div>
+
+        <span>Copyright ©2022 Speckled Banana Ltd. </span>
+        <div class="company-details column">
+          <span>Company registration number: 13582619</span>
+          <span>VAT registration number: 389 3516 52 </span>
+          <span>ICO Registration number: ZB267315</span>
+        </div>
+        This website is a 🍪 free zone
       </div>
     </footer>
   </body>
