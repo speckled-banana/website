@@ -82,6 +82,10 @@
     display: none;
   }
 
+  main {
+    padding: 0 40px;
+  }
+
   main section {
     padding: 3rem;
   }
@@ -113,6 +117,10 @@
 
   .hero h2 {
     font-size: 4.5rem;
+  }
+
+  footer {
+    padding: 0 40px;
   }
 
   footer .brand .logo {

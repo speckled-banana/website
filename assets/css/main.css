@@ -20,6 +20,36 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+main h2 {
+  font-size: 6.5vw;
+}
+
+main h3 {
+  font-size: 5.5vw;
+  margin-top: 3rem;
+}
+
+main.home h2,
+main.home h3 {
+  color: var(--light-text);
+}
+
+main h2::after,
+main h3::after,
+header nav li a::after {
+  content: '.';
+  color: var(--light-text);
+  margin-left: 0.1rem;
+}
+
+main.home h2::after,
+main.home h3::after,
+header nav li a::after {
+  color: var(--secondary);
 }
 
 a {
@@ -44,16 +74,6 @@ p {
 
 hr {
   margin: 2rem 0;
-}
-
-.period {
-  margin-left: 0.1em;
-  color: var(--secondary);
-}
-
-.period-light {
-  margin-left: 0.1em;
-  color: var(--light-text);
 }
 
 /* LAYOUT */
@@ -125,7 +145,7 @@ header .top-row {
 }
 
 .tag-line {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 0.46rem;
   color: var(--light-grey);
   /* margin-bottom: 1rem; */
@@ -324,21 +344,36 @@ main section {
   /* grid-column: 1 / 12; */
 }
 
-main section h2 {
-  text-transform: uppercase;
-  /* background-color: var(--secondary); */
-  /* color: var(--dark); */
-  /* display: table; */
-  /* padding: 0 0.15rem; */
-  font-size: 6.5vw;
-}
-
-main section h3 {
-  font-size: 6vw;
-}
-
 main section i {
   color: var(--secondary);
+}
+
+main.privacy-policy section {
+  background-color: var(--dark);
+}
+
+/* 
+main.home h2 {
+  font-size: 6.25vw;
+}
+main.home h3 {
+  font-size: 5.5vw;
+} */
+
+main li {
+  list-style-type: none;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  margin-left: 0.9rem;
+}
+
+main li::before {
+  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--secondary); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 main div.services-container li {
@@ -347,6 +382,10 @@ main div.services-container li {
   padding-left: 1.5rem;
   text-indent: -0.75rem;
   /* position: relative; */
+}
+
+main div.services-container h3 {
+  margin-top: 0;
 }
 
 main div.services li::before {
@@ -384,10 +423,10 @@ main section.hero {
   padding: 2rem 0.75rem;
 }
 
-.hero h2 {
+main .hero h2 {
   z-index: 500;
-  font-size: 7.5vw;
-  text-transform: uppercase;
+  font-size: 8vw;
+  /* text-transform: uppercase; */
   /* padding: 0 4em; */
   /* border-radius: 20px; */
   /* background: rgba(255, 255, 255, 0.1); */
@@ -557,35 +596,4 @@ footer nav menu li {
 
 footer .company-details {
   font-size: 0.6rem;
-}
-
-main.privacy-policy section {
-  background-color: var(--dark);
-}
-
-main.privacy-policy h2 {
-  font-size: 1.8rem;
-  color: var(--secondary);
-}
-main.privacy-policy h3 {
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  color: var(--secondary);
-  margin-top: 3rem;
-}
-
-main.privacy-policy li {
-  list-style-type: none;
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-  margin-left: 0.9rem;
-}
-
-main.privacy-policy li::before {
-  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: var(--secondary); /* Change the color */
-  font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1em; /* Also needed for space (tweak if needed) */
-  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
