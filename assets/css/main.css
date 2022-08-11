@@ -6,7 +6,7 @@ body {
   background-color: var(--dark);
   color: var(--light-text);
   font-family: 'Atkinson Hyperlegible', sans-serif;
-  font-size: 1.1rem;
+  font-size: var(--text-base);
 }
 
 body.scrolled {
@@ -25,27 +25,32 @@ h6 {
 }
 
 main h2 {
-  font-size: 6.5vw;
+  font-size: clamp(1.3rem, 6.5vw, 3rem);
 }
 
 main h3 {
-  font-size: 5.5vw;
+  font-size: clamp(1.1rem, 6vw, 2.25rem);
   margin-top: 3rem;
+}
+
+main .hero h2 {
+  font-size: clamp(1.75rem, 8vw, 3.25rem);
 }
 
 main.home h2,
 main.home h3 {
   color: var(--light-text);
 }
-
+h1::after,
 main h2::after,
 main h3::after,
 header nav li a::after {
   content: '.';
   color: var(--light-text);
-  margin-left: 0.1rem;
+  margin-left: 0.1em;
 }
 
+h1::after,
 main.home h2::after,
 main.home h3::after,
 header nav li a::after {
@@ -63,13 +68,22 @@ ul {
 
 li {
   list-style-type: none;
-  font-size: 1rem;
+  font-size: var(--text-base);
+  margin-bottom: 0.25rem;
+  margin-left: var(--padding-lr);
 }
 
-p {
-  font-size: 1rem;
-  /* text-align: justify; */
-  /* text-justify: inter-word; */
+li::before {
+  font-size: var(--text-sm);
+}
+
+main li::before {
+  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--secondary); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 hr {
@@ -146,7 +160,7 @@ header .top-row {
 
 .tag-line {
   /* text-transform: uppercase; */
-  font-size: 0.46rem;
+  font-size: clamp(0.46rem, 2.5vw, 0.8rem);
   color: var(--light-grey);
   /* margin-bottom: 1rem; */
   /* color: var(--secondary); */
@@ -177,7 +191,7 @@ nav a:visited,
   /* background: var(--dark); */
   /* color: var(--light-text); */
   display: block;
-  margin-top: 85px;
+  margin-top: 80px;
   position: absolute;
   z-index: 60;
 }
@@ -219,7 +233,7 @@ header nav {
   background-color: transparent;
   height: 0;
   transition: height 600ms ease-in-out;
-  margin-left: -20px;
+  margin-left: -15px;
 }
 
 header nav hr {
@@ -233,17 +247,28 @@ header nav hr {
 
 header nav menu {
   width: 100vw;
-  padding: calc(var(--header-height) / 4) 0 0;
+  padding: calc(var(--header-height) / 5) 0 0;
   margin: 0;
   height: 0;
   background: var(--dark-opaque);
-  transition: height 600ms ease-in-out, background-color 400ms ease-out,
-    margin 600ms ease-in-out;
+  transition: height 600ms ease-in-out, background-color 400ms ease-out, margin 600ms ease-in-out;
 }
 
 header nav menu li {
   display: block;
-  padding: 20px 20px 20px 30px;
+  padding: 15px 15px 15px 30px;
+  margin-left: var(--padding-lr-sm);
+  font-size: var(--text-lg);
+}
+
+@media (max-height: 400px) {
+  header nav menu {
+    padding-top: 10px;
+  }
+
+  header nav menu li {
+    padding: 10px 10px 10px 30px;
+  }
 }
 
 /* BURGER ICON */
@@ -313,7 +338,7 @@ header nav menu li {
 main {
   /* margin-top: var(--header-height); */
 
-  padding: 0 15px;
+  padding: 0 var(--margin-lr);
 }
 
 main section:first-of-type {
@@ -328,7 +353,7 @@ main section {
   /* padding: 2em 0;*/
   background-color: var(--dark-opaque);
 
-  padding: 1.2rem 0.75rem;
+  padding: 1.2rem var(--padding-lr);
   margin: 1rem 0;
   border: 1px solid var(--secondary);
 
@@ -360,28 +385,28 @@ main.home h3 {
   font-size: 5.5vw;
 } */
 
-main li {
-  list-style-type: none;
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-  margin-left: 0.9rem;
-}
-
-main li::before {
-  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: var(--secondary); /* Change the color */
-  font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1em; /* Also needed for space (tweak if needed) */
-  margin-left: -1em; /* Also needed for space (tweak if needed) */
+main .services-container {
+  display: flex;
+  flex-direction: column;
 }
 
 main div.services-container li {
   margin-bottom: 0.5rem;
   /* margin-top: -0.5rem; */
-  padding-left: 1.5rem;
+  padding-left: 0.75rem;
   text-indent: -0.75rem;
   /* position: relative; */
+}
+
+main div.services-container li::before {
+  /* font-size: 0.8rem; */
+  position: absolute;
+  margin-left: 0;
+  margin-top: 2px;
+}
+
+main div.services-container li span {
+  margin-left: 0.75rem;
 }
 
 main div.services-container h3 {
@@ -390,25 +415,24 @@ main div.services-container h3 {
 
 main div.services li::before {
   content: '✅ ';
-  margin-top: 2px;
+  /* margin-top: 2px; */
 }
 
 main div.values li::before {
   content: '❌ ';
-  margin-top: 4px;
-}
-main div.services-container li::before {
-  font-size: 0.8rem;
-  position: absolute;
+  /* margin-top: 2px; */
 }
 
-main div.services-container li span {
-  margin-left: 0.75rem;
+@media (min-width: 550px) {
+  main div.services-container li::before {
+    margin-top: 3px;
+  }
 }
 
-main .services-container {
-  display: flex;
-  flex-direction: column;
+@media (min-width: 600px) {
+  main div.services-container li::before {
+    margin-top: 4px;
+  }
 }
 
 main section.hero {
@@ -420,25 +444,7 @@ main section.hero {
   /* margin-top: calc(var(--header-height) + 1rem); */
   background-color: var(--dark);
   /* text-align: center; */
-  padding: 2rem 0.75rem;
-}
-
-main .hero h2 {
-  z-index: 500;
-  font-size: 8vw;
-  /* text-transform: uppercase; */
-  /* padding: 0 4em; */
-  /* border-radius: 20px; */
-  /* background: rgba(255, 255, 255, 0.1); */
-  /* background: var(--dark); */
-  /* backdrop-filter: blur(8px); */
-  /* width: 70vw; */
-  text-shadow: 3px 1px 5px var(--dark);
-  /* padding: 1em; */
-  /* border: 2px solid var(--primary); */
-  margin: 0;
-
-  /* padding-top: 100px 0; */
+  padding: 2rem var(--padding-lr);
 }
 
 /* .tag-line {

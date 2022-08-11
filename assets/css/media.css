@@ -6,19 +6,37 @@
   .mobile-only {
     display: none;
   }
-  /* HEADER & NAV */
 
-  h2 {
-    font-size: 2rem;
+  body,
+  li {
+    font-size: var(--text-lg);
   }
 
-  p {
-    font-size: 1.3rem;
+  /* HEADER & NAV */
+
+  main h2 {
+    font-size: clamp(1.3rem, 6.5vw, 3rem);
+  }
+
+  main .services-container h3 {
+    font-size: clamp(1.1rem, 2.75vw, 2rem);
+  }
+
+  main .hero h2 {
+    font-size: clamp(1.8rem, 7.5vw, 5rem);
+  }
+
+  header,
+  footer {
+    padding: 0 var(--padding-lr-lg);
+  }
+
+  main section {
+    padding: 2.5rem var(--padding-lr-lg);
   }
 
   header {
     /* height: var(--header-height-lg); */
-    padding: 0 40px;
     border-bottom: 1px solid var(--primary);
   }
 
@@ -71,23 +89,16 @@
   header nav menu li {
     display: inline;
     padding: 0;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
   }
 
-  header nav menu li:not(:last-child) {
-    padding-right: 30px;
-  }
+  /* header nav menu li:not(:last-child) {
+    padding-right: clamp(20px, 1vw, 30px);
+  } */
 
   .side-menu,
   .burger {
     display: none;
-  }
-
-  main {
-    padding: 0 40px;
-  }
-
-  main section {
-    padding: 3rem;
   }
 
   main .services-container {
@@ -100,27 +111,31 @@
     width: 50%;
   }
 
-  main .services-container h3 {
-    font-size: 1.6rem;
+  main div.services-container li {
+    /* margin-bottom: 0.5rem; */
+    /* margin-top: -0.5rem; */
+    padding-left: 0;
+
+    /* position: relative; */
   }
 
-  main .services-container li span {
-    font-size: 1.3rem;
+  main div.services li::before {
+    margin-top: 3px;
   }
+
+  /* main .services-container h3 {
+    font-size: 1.6rem;
+  } */
+
+  /* main .services-container li span {
+    font-size: 1.3rem;
+  } */
 
   /* HERO */
 
   main section.hero {
     margin-top: calc(var(--header-height-lg) + 1.5rem);
-    padding: 5rem 3rem;
-  }
-
-  .hero h2 {
-    font-size: 4.5rem;
-  }
-
-  footer {
-    padding: 0 40px;
+    padding: 5rem var(--padding-lr-lg);
   }
 
   footer .brand .logo {
@@ -131,7 +146,7 @@
     margin-left: -18px;
   }
 
-  main.privacy-policy h2 {
+  /* main.privacy-policy h2 {
     font-size: 2.5rem;
   }
   main.privacy-policy h3 {
@@ -142,7 +157,7 @@
   main.privacy-policy li {
     margin-bottom: 0.25rem;
     font-size: 1.1rem;
-  }
+  } */
 }
 
 /* SMALL LAPTOP & ABOVE */
@@ -154,9 +169,8 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .hero h2 {
+  /* .hero h2 {
     font-size: 5rem;
-    /* background-color: transparent;
-    color: var(--light-text); */
-  }
+
+  } */
 }

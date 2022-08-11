@@ -18,4 +18,12 @@
   --desktop: 1024px;
   --header-height: 105px;
   --header-height-lg: 110px;
+  --margin-lr: clamp(15px, 4vw, 25px);
+  --padding-lr-sm: clamp(10px, 2.75vw, 30px);
+  --padding-lr: clamp(12px, 3vw, 25px);
+  --text-sm: clamp(0.8rem, 2vw, 1.1rem);
+  --text-base: clamp(0.8rem, 3vw, 1.3rem);
+  --margin-lr-lg: clamp(15px, 4vw, 25px);
+  --padding-lr-lg: clamp(25px, 3.25vw, 40px);
+  --text-lg: clamp(0.8rem, 2.75vw, 1.3rem);
 }
