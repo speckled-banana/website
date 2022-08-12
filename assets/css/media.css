@@ -123,6 +123,10 @@
     margin-top: 3px;
   }
 
+  #contact-placeholder {
+    scroll-margin-top: calc(var(--header-height-lg) + 3rem);
+  }
+
   /* main .services-container h3 {
     font-size: 1.6rem;
   } */

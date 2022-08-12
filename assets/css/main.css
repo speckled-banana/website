@@ -502,20 +502,28 @@ form.contact {
   padding: 1rem;
 }
 
-#contact-placeholder.success > *:not(.contact-form-message):not(h2),
-#contact-placeholder.failure > *:not(.contact-form-message):not(h2) {
+#contact-placeholder {
+  scroll-margin-top: calc(var(--header-height) + 3rem);
+}
+
+#contact-placeholder.success > *:not(.contact-status-message):not(h2),
+#contact-placeholder.failure > *:not(.contact-status-message):not(h2) {
   display: none;
 }
 
-#contact-placeholder.success .contact-form-message {
-  color: var(--success);
+#contact-placeholder.success .contact-status-message,
+#contact-placeholder.failure .contact-status-message {
   display: block;
 }
 
-#contact-placeholder.failure .contact-form-message {
-  color: var(--failure);
-  display: block;
+#contact-placeholder.success {
+  border-color: green;
 }
+
+#contact-placeholder.failure {
+  border-color: red;
+}
+
 .contact form .contact-form-message p {
   font-size: 2rem;
 }

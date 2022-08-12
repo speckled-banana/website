@@ -1,6 +1,6 @@
 const page = window.location;
-const contactFormTitle = `<h2>Contact Speckled Banana</h2>`;
-const contactFormIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
+const formTitle = `<h2>Contact Speckled Banana</h2>`;
+const formIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
           <p>
             +44 (0)208 0584946 or
             <a href="mailto:hello@speckledbanana.com">hello@speckledbanana.com</a>.
@@ -8,7 +8,7 @@ const contactFormIntroHTML = `<p>You can send us a message using the contact for
 
           <hr />`;
 
-const contactFormHTML = `<form onsubmit="sendContactForm()"
+const formHTML = `<form onsubmit="sendMsg()"
     class="contact column"
     id="contact-form"
   >
@@ -64,53 +64,53 @@ const contactFormHTML = `<form onsubmit="sendContactForm()"
     </button>
   </form>
      <div
-          class="contact-form-message"
-          id="contact-form-message"
+          class="contact-status-message"
+          id="contact-status-message"
         ></div>`;
 
-const contactPlaceholder = document.getElementById('contact-placeholder');
-if (contactPlaceholder) {
-  contactPlaceholder.innerHTML = contactFormTitle + (page.toString().indexOf('contact-us') > 0 ? contactFormIntroHTML : '') + contactFormHTML;
+const placeholder = document.getElementById('contact-placeholder');
+if (placeholder) {
+  placeholder.innerHTML = formTitle + (page.toString().indexOf('contact-us') > 0 ? formIntroHTML : '') + formHTML;
 }
 
-const contactForm = document.getElementById('contact-form');
-const gdprCheckbox = document.getElementById('gdpr');
-const contactSubmitButton = document.getElementById('contact-submit-button');
-const contactFormMessage = document.getElementById('contact-form-message');
+const form = document.getElementById('contact-form');
+const gdpr = document.getElementById('gdpr');
+const submitBtn = document.getElementById('contact-submit-button');
+const statusMsg = document.getElementById('contact-status-message');
 
-let contactErrorCount = 0;
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+let errCount = 0;
+if (form) {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    sendContactForm();
+    sendMsg;
   });
 }
 
-if (gdprCheckbox) {
-  if (gdprCheckbox.checked) {
-    contactSubmitButton.disabled = false;
+if (gdpr) {
+  if (gdpr.checked) {
+    submitBtn.disabled = false;
   } else {
-    contactSubmitButton.disabled = true;
+    submitBtn.disabled = true;
   }
 
-  contactForm.addEventListener('change', (e) => {
-    if (gdprCheckbox.checked) {
-      contactSubmitButton.disabled = false;
+  form.addEventListener('change', (e) => {
+    if (gdpr.checked) {
+      submitBtn.disabled = false;
     } else {
-      contactSubmitButton.disabled = true;
+      submitBtn.disabled = true;
     }
   });
 }
 
-async function sendContactForm() {
-  contactForm.disabled = true;
-  contactForm.classList.toggle('loading', true);
+const sendMsg = async () => {
+  form.disabled = true;
+  form.classList.toggle('loading', true);
 
-  const form = new FormData(contactForm);
+  const formData = new FormData(form);
 
   await fetch('http://localhost:3000/contact', {
     method: 'POST',
-    body: form,
+    body: formData,
   })
     .then((res) => {
       if (res.status != 200) {
@@ -119,44 +119,57 @@ async function sendContactForm() {
       return res;
     })
     .then((res) => {
-      contactForm.classList.toggle('loading', false);
-      contactForm.disabled = false;
-      contactFormMessage.innerHTML = "<p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p>";
-      contactPlaceholder.classList.toggle('success', true);
-      setTimeout(() => resetContactForm('success'), 5000);
+      form.classList.toggle('loading', false);
+      form.disabled = false;
+      statusMsg.innerHTML = "<p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p>";
+      placeholder.classList.toggle('success', true);
+      scrollMsg();
+      setTimeout(() => resetForm(), 5000);
     })
     .catch((err) => {
-      console.log(err);
-      processError();
+      processErr();
     });
-}
+};
 
-function processError() {
-  contactForm.classList.toggle('loading', false);
-  contactForm.disabled = false;
-  contactPlaceholder.classList.toggle('failure', true);
-  if (contactErrorCount == 0) {
-    contactFormMessage.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
-    setTimeout(() => resetContactForm('failure'), 3000);
+const processErr = () => {
+  form.classList.toggle('loading', false);
+  form.disabled = false;
+  placeholder.classList.toggle('failure', true);
+  if (errCount == 0) {
+    statusMsg.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
+    setTimeout(() => resetForm('failure'), 3000);
   } else {
-    contactFormMessage.innerHTML = `<p>❌ Sorry, something is still broken.</p>
+    statusMsg.innerHTML = `<p>❌ Sorry, something is still broken.</p>
           <p>
             <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
           <p>Alternatively give us a call on +44 (0)208 0584946</p>`;
   }
-}
+  scrollMsg();
+};
 
-function resetContactForm(outcome) {
-  if (outcome === 'success') {
-    contactPlaceholder.classList.toggle('success', false);
+const resetForm = (err) => {
+  if (!err) {
+    placeholder.classList.toggle('success', false);
     document.getElementById('contact-email').value = null;
     document.getElementById('contact-message').value = null;
     document.getElementById('contact-info').value = null;
-
-    gdprCheckbox.checked = false;
+    gdpr.checked = false;
   } else {
-    contactErrorCount++;
-    contactPlaceholder.classList.toggle('failure', false);
+    errCount++;
+    placeholder.classList.toggle('failure', false);
   }
-  contactFormMessage.innerHTML = null;
-}
+  statusMsg.innerHTML = null;
+};
+
+const scrollMsg = () => window.scrollTo({ behaviour: 'smooth', top: findPosition(placeholder) });
+
+const findPosition = (obj) => {
+  const headerOffset = document.querySelector('header').getBoundingClientRect().bottom + 20;
+  let top = 0;
+  if (obj.offsetParent) {
+    do {
+      top += obj.offsetTop - headerOffset;
+    } while ((obj = obj.offsetParent));
+    return [top];
+  }
+};
