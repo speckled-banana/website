@@ -2,6 +2,10 @@
 
 /* Additional Reset / Base Styles */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--dark);
   color: var(--light-text);
@@ -44,7 +48,8 @@ main.home h3 {
 h1::after,
 main h2::after,
 main h3::after,
-header nav li a::after {
+header nav li a::after,
+footer nav li a::after {
   content: '.';
   color: var(--light-text);
   margin-left: 0.1em;
@@ -53,7 +58,8 @@ header nav li a::after {
 h1::after,
 main.home h2::after,
 main.home h3::after,
-header nav li a::after {
+header nav li a::after,
+footer nav li a::after {
   color: var(--secondary);
 }
 
@@ -88,6 +94,19 @@ main li::before {
 
 hr {
   margin: 2rem 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.tr-border {
+  border-top: 1px solid var(--light-grey);
+}
+
+table td {
+  vertical-align: top;
+  padding: 1rem 1rem 1rem 0;
 }
 
 /* LAYOUT */
@@ -233,7 +252,7 @@ header nav {
   background-color: transparent;
   height: 0;
   transition: height 600ms ease-in-out;
-  margin-left: -15px;
+  margin-left: calc(var(--margin-lr) * -1);
 }
 
 header nav hr {
@@ -310,11 +329,11 @@ header nav menu li {
 
 /* Toggle menu icon */
 .side-menu:checked ~ nav {
-  height: 100vh;
+  height: 100%;
 }
 
 .side-menu:checked ~ nav menu {
-  height: 100vh;
+  height: 100%;
   background: var(--dark);
 }
 .side-menu:checked ~ nav hr {
@@ -572,12 +591,22 @@ div.consent input {
 
 footer {
   border-top: 1px solid var(--primary);
-  padding: 1.5rem 15px 1.5rem;
+  padding: 1.5rem var(--padding-lr);
   background-color: var(--dark);
+  font-size: var(--text-sm);
   /* padding-top: 1.5rem; */
   /* justify-content: center;
   align-content: center;
   align-items: center; */
+}
+
+footer hr {
+  display: block;
+  background-color: transparent;
+  /* height: 1px; */
+  border-bottom: 1px solid var(--light-grey);
+
+  margin: 0 0 0.5rem;
 }
 
 footer-content {
@@ -603,17 +632,58 @@ footer nav menu {
   padding: 0;
   justify-content: space-between;
   flex-wrap: wrap;
-  font-size: 0.8rem;
+  margin-bottom: 0;
 }
 
-footer nav menu a {
-  text-decoration: underline;
+footer nav menu li:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
-footer nav menu li {
+
+footer ul {
+  margin-bottom: 0;
+}
+
+footer li {
   /* width: %; */
-  padding-bottom: 1rem;
+  font-size: var(--text-sm);
+  padding-bottom: 0.5rem;
+  margin-left: 0;
 }
 
 footer .company-details {
   font-size: 0.6rem;
+}
+
+div.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+footer nav ul li:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+div.p-c {
+  justify-content: center;
+  margin: 1rem 0 0.5rem;
+  gap: 10px;
+}
+
+/* span.cookie {
+  font-size: var(--text-xs);
+} */
+
+/* div.copyright {
+  display: flex;
+  justify-content: center; */
+/* } */
+#copyright {
+  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+  display: flex;
+  justify-content: center;
 }

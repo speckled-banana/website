@@ -12,14 +12,14 @@ const formHTML = `<form onsubmit="sendMsg()"
     class="contact column"
     id="contact-form"
   >
-    <label for="email">Your email</label>
+    <label for="contact-email">Your email</label>
     <input
       type="email"
       name="email"
       id="contact-email"
       required
     />
-    <label for="message">Message</label>
+    <label for="contact-message">Message</label>
     <textarea
       name="message"
       id="contact-message"

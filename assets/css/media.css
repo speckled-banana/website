@@ -150,6 +150,10 @@
     margin-left: -18px;
   }
 
+  footer .company-details {
+    font-size: var(--text-sm);
+  }
+
   /* main.privacy-policy h2 {
     font-size: 2.5rem;
   }

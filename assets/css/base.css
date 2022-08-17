@@ -22,6 +22,7 @@
   --margin-lr: clamp(15px, 4vw, 25px);
   --padding-lr-sm: clamp(10px, 2.75vw, 30px);
   --padding-lr: clamp(12px, 3vw, 25px);
+  --text-xs: clamp(0.6rem, 1.75vw, 0.9rem);
   --text-sm: clamp(0.8rem, 2vw, 1.1rem);
   --text-base: clamp(0.8rem, 3vw, 1.3rem);
   --margin-lr-lg: clamp(15px, 4vw, 25px);
