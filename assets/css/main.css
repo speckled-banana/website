@@ -48,6 +48,7 @@ main.home h3 {
 h1::after,
 main h2::after,
 main h3::after,
+main h4::after,
 header nav li a::after,
 footer nav li a::after {
   content: '.';
@@ -63,33 +64,48 @@ footer nav li a::after {
   color: var(--secondary);
 }
 
+/* strong {
+  color: var(--secondary);
+} */
+
 a {
   color: var(--primary);
   text-decoration: none;
 }
 
-ul {
+ul,
+ol {
   padding: 0;
 }
 
 li {
-  list-style-type: none;
   font-size: var(--text-base);
   margin-bottom: 0.25rem;
   margin-left: var(--padding-lr);
 }
 
-li::before {
+ul li::before {
   font-size: var(--text-sm);
 }
 
-main li::before {
+main ul li::before {
   content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: var(--secondary); /* Change the color */
   font-weight: bold; /* If you want it to be bold */
   display: inline-block; /* Needed to add space between the bullet and the text */
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+ol li {
+  margin-left: clamp(16px, 3vw, 30px);
+}
+
+ul li,
+main li,
+header nav menu li,
+footer nav menu li {
+  list-style-type: none;
 }
 
 hr {
@@ -198,7 +214,7 @@ nav menu a:hover,
 }
 
 nav a:visited,
-.brand a:visted {
+.brand a:visited {
   color: var(--light-text);
 }
 
@@ -547,6 +563,10 @@ form.contact {
   font-size: 2rem;
 }
 
+#contact-placeholder label p {
+  margin-top: 0.5em;
+}
+
 .contact form input:not(#gdpr),
 .contact form textarea {
   margin-top: 0.25rem;
@@ -555,18 +575,24 @@ form.contact {
 }
 
 div.consent {
-  margin-bottom: 1.5rem;
-  vertical-align: top;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+  /* vertical-align: top; */
 }
 div.consent label {
   margin-left: 0.25rem;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
-div.consent input {
-  width: 5rem;
-  /* height: 5rem; */
-  vertical-align: top;
+div.consent input[type='checkbox'] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  /* width: 3rem; */
+  margin: 0.3em 0.75em 0 0.3em;
 }
 
 .contact form textarea {
@@ -613,6 +639,7 @@ footer-content {
   /* display: flex; */
   /* flex-direction: column; */
   justify-content: center;
+  /* padding-bottom: 1.5rem; */
 }
 
 footer .brand {
@@ -628,16 +655,28 @@ footer .brand img {
   margin-left: -18px;
 }
 
-footer nav menu {
-  padding: 0;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 0;
+footer nav {
+  margin-top: 1em;
 }
 
-footer nav menu li:last-of-type {
+footer nav menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  margin: 0;
+}
+
+/* footer nav menu li:last-of-type {
   margin-bottom: 0;
   padding-bottom: 0;
+} */
+
+footer nav menu li {
+  padding: 0;
+  margin: 0;
 }
 
 footer ul {
@@ -686,4 +725,95 @@ div.p-c {
   font-size: var(--text-sm);
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.light-text {
+  color: var(--text-light);
+}
+
+main.who ul.projects {
+  flex-wrap: wrap;
+}
+
+/* main.who ul.projects li {
+  width: 45%;
+} */
+
+main.who h2 {
+  margin-bottom: 1rem;
+}
+
+main.who h3 {
+  margin-top: 1.5rem;
+}
+
+main.who h3:first-of-type {
+  margin-top: 2rem;
+}
+
+main.who section p:first-of-type {
+  margin-top: 0;
+}
+
+main.values h2 {
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+main.values h2:first-child {
+  margin-top: 0;
+}
+
+main.values h3 {
+  margin-top: 1.5rem;
+}
+
+main.values hr {
+  margin: 1.5rem 0 0.5rem;
+}
+
+div.experience {
+  display: grid;
+  margin: 2rem 0 0;
+  grid-template-columns: repeat(auto-fit, 40vw);
+  justify-content: space-between;
+}
+/* div.experience div {
+  max-width: 3000px;
+} */
+
+main div.experience h4 {
+  font-size: var(--text-md);
+  margin: 0;
+}
+
+div.experience ul li {
+  font-size: var(--text-xs);
+  margin-left: 15px;
+}
+
+/* div.headshot {
+  margin-top: 1rem;
+}
+
+div.headshot div p:first-of-type {
+  margin: 0;
+} */
+
+#headshot {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-left: 10px;
+  border: 1px solid var(--secondary);
+  float: right;
+}
+
+.primary {
+  color: var(--primary);
 }

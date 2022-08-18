@@ -12,10 +12,19 @@
     font-size: var(--text-lg);
   }
 
+  #headshot {
+    width: 200px;
+    height: 200px;
+  }
+
+  main.who h2 {
+    margin-bottom: 1.5rem;
+  }
+
   /* HEADER & NAV */
 
   main h2 {
-    font-size: clamp(1.3rem, 6.5vw, 3rem);
+    font-size: clamp(1.3rem, 6.5vw, 3.5rem);
   }
 
   main .services-container h3 {
@@ -26,9 +35,11 @@
     font-size: clamp(1.8rem, 7.5vw, 5rem);
   }
 
-  header,
-  footer {
+  header {
     padding: 0 var(--padding-lr-lg);
+  }
+  footer {
+    padding: 1rem var(--padding-lr-lg);
   }
 
   main section {
@@ -137,8 +148,11 @@
 
   /* HERO */
 
-  main section.hero {
+  main section:first-of-type {
     margin-top: calc(var(--header-height-lg) + 1.5rem);
+  }
+
+  main section.hero {
     padding: 5rem var(--padding-lr-lg);
   }
 
@@ -152,6 +166,18 @@
 
   footer .company-details {
     font-size: var(--text-sm);
+  }
+
+  main.who ul.projects li {
+    width: 45%;
+  }
+
+  div.experience {
+    grid-template-columns: repeat(auto-fit, clamp(140px, 11vw, 157px));
+  }
+
+  main div.experience h4 {
+    font-size: var(--text-xs);
   }
 
   /* main.privacy-policy h2 {
@@ -176,9 +202,13 @@
   header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
+}
 
-  /* .hero h2 {
-    font-size: 5rem;
+/* MEDIUM LAPTOP & ABOVE */
+@media (min-width: 1280px) {
+  /* HERO */
 
-  } */
+  main div.experience h4 {
+    font-size: var(--text-sm);
+  }
 }

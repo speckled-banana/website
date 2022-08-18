@@ -51,7 +51,7 @@ const formHTML = `<form onsubmit="sendMsg()"
         id="gdpr"
       />
       <label for="gdpr">
-        The data submitted on this contact form will only ever be used to respond to your query. More details can be found in our <a href="./privacy-policy.html">privacy policy</a>. Are you ok with this?
+        I'm happy for my data to be used to respond to my query.<p>We won't store or use your email address for any other purpose.  More details can be found in our <a href="./privacy-policy.html">privacy policy</a>.</p>
       </label>
     </div>
 
