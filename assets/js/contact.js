@@ -19,12 +19,14 @@ const formHTML = `<form onsubmit="sendMsg()"
       id="contact-email"
       required
     />
+    <label class="form-error" id="contact-email-error" for="contact-email">❗ Please enter a valid email address</label>
     <label for="contact-message">Message</label>
     <textarea
       name="message"
       id="contact-message"
       required
     ></textarea>
+    <label class="form-error" id="contact-message-error" for="contact-message">❗ Please enter a message</label>
     <label
       for="info"
       class="contact-info"

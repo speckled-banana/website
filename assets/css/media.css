@@ -1,5 +1,30 @@
 @import 'base.css';
 
+/* LANDSCAPE PHONE */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  header {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
+  }
+  main section:first-of-type,
+  main section.hero {
+    margin-top: 1rem;
+  }
+
+  .side-menu:checked ~ nav {
+    z-index: 999;
+  }
+
+  .side-menu:checked ~ nav menu {
+    padding-top: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
 /* TABLET & ABOVE */
 
 @media (min-width: 768px) {
@@ -12,13 +37,25 @@
     font-size: var(--text-lg);
   }
 
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
   #headshot {
     width: 200px;
     height: 200px;
+    margin-top: -75px;
   }
 
   main.who h2 {
     margin-bottom: 1.5rem;
+  }
+
+  main section {
+    border-radius: 0.75rem;
   }
 
   /* HEADER & NAV */
@@ -27,28 +64,40 @@
     font-size: clamp(1.3rem, 6.5vw, 3.5rem);
   }
 
+  main section:not(.hero) h2 {
+    margin-top: 2rem;
+  }
+
   main .services-container h3 {
     font-size: clamp(1.1rem, 2.75vw, 2rem);
   }
 
   main .hero h2 {
-    font-size: clamp(1.8rem, 7.5vw, 5rem);
+    font-size: clamp(1.8rem, 8.5vw, 10rem);
   }
 
   header {
     padding: 0 var(--padding-lr-lg);
+    /* border-bottom: 1px solid var(--primary); */
   }
   footer {
     padding: 1rem var(--padding-lr-lg);
   }
 
-  main section {
+  main section:not(.hero) {
     padding: 2.5rem var(--padding-lr-lg);
   }
 
-  header {
-    /* height: var(--header-height-lg); */
-    border-bottom: 1px solid var(--primary);
+  main section:not(:first-of-type) {
+    margin-top: 4rem;
+  }
+
+  main section:first-of-type {
+    margin-top: calc(var(--header-height-lg) + 1.5rem);
+  }
+
+  main section.hero {
+    padding: 7rem var(--padding-lr-lg);
   }
 
   .header-content .bottom-row {
@@ -125,14 +174,14 @@
   main div.services-container li {
     /* margin-bottom: 0.5rem; */
     /* margin-top: -0.5rem; */
-    padding-left: 0;
+    /* padding-left: 0; */
 
     /* position: relative; */
   }
 
-  main div.services li::before {
+  /* main div.services li::before {
     margin-top: 3px;
-  }
+  } */
 
   #contact-placeholder {
     scroll-margin-top: calc(var(--header-height-lg) + 3rem);
@@ -147,14 +196,6 @@
   } */
 
   /* HERO */
-
-  main section:first-of-type {
-    margin-top: calc(var(--header-height-lg) + 1.5rem);
-  }
-
-  main section.hero {
-    padding: 5rem var(--padding-lr-lg);
-  }
 
   footer .brand .logo {
     font-size: 1.25rem;
@@ -199,9 +240,9 @@
 @media (min-width: 1024px) {
   /* HERO */
 
-  header {
+  /* header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
+  } */
 }
 
 /* MEDIUM LAPTOP & ABOVE */

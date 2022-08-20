@@ -1,16 +1,31 @@
 :root {
-  --primary: #fefe49;
+  --primary: #ffd700;
+  --primary-opaque: rgba(255, 215, 0, 0.3);
   --primary-backup: #fff648;
-  --secondary: #fffa9d;
+  --secondary: #fefe49;
+  --dots: #ffd700;
+  /* --dots: #ffcb00; */
+  /* --dots: #fefe49; */
+
+  /* --primary: #fefe49;
+  --primary-backup: #fff648;
+  --secondary: #fffa9d; */
   --success: #bcff9d;
   --failure: #fcc5c5;
   --secondary-opaque: rgba(255, 250, 157, 0.9);
   /* --dark: #0c0029; */
-  --dark: #000;
-  --dark-lighter: #130339;
-  --dark-opaque: rgba(0, 0, 0, 0.8);
+  /* --dark: rgb(0, 19, 1); */
+  /* --dark: rgb(0, 37, 37); */
+  /* --dark: rgb(0, 32, 14); */
+  --dark: rgb(12, 26, 24);
+  /* --dark: rgb(11, 34, 25); */
+  /* --dark-opaque: rgba(0, 37, 37, 0.8); */
+  /* --dark-opaque: rgba(0, 32, 14, 0.8); */
+  --dark-opaque: rgba(12, 26, 24, 0.7);
+  /* --dark-opaque: rgba(11, 34, 25, 0.8); */
+  /* --dark-opaque: rgba(0, 19, 1, 0.8); */
   /* --dark-opaque: rgba(12, 0, 41, 0.8); */
-  --dark-opaque-lighter: rgba(36, 30, 49, 0.7);
+  --dark-opaque-lighter: rgba(30, 49, 34, 0.7);
   --light-text: rgb(238, 238, 238);
   --light-grey: rgb(207, 207, 207);
   --xs: 599px;
@@ -22,14 +37,14 @@
   --desktop: 1024px;
   --header-height: 105px;
   --header-height-lg: 110px;
-  --margin-lr: clamp(15px, 4vw, 25px);
+  --margin-lr: clamp(10px, 3.5vw, 25px);
   --padding-lr-sm: clamp(10px, 2.75vw, 30px);
-  --padding-lr: clamp(12px, 3vw, 25px);
+  --padding-lr: clamp(1rem, 3vw, 25px);
   --text-xs: clamp(0.6rem, 1.75vw, 0.9rem);
   --text-sm: clamp(0.8rem, 2vw, 1.1rem);
   --text-md: clamp(0.9rem, 2.25vw, 1.2rem);
-  --text-base: clamp(0.8rem, 3vw, 1.3rem);
+  --text-base: clamp(1rem, 3vw, 1.5rem);
   --margin-lr-lg: clamp(15px, 4vw, 25px);
-  --padding-lr-lg: clamp(25px, 3.25vw, 40px);
+  --padding-lr-lg: clamp(25px, 4vw, 50px);
   --text-lg: clamp(0.8rem, 2.75vw, 1.3rem);
 }
