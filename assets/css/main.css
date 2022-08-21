@@ -322,10 +322,10 @@ nav a:visited,
   /* margin-top: -32px;
   margin-left: -30px; */
   z-index: 48;
-  height: var(--header-height);
+  /* height: var(--header-height); */
 
-  margin-left: -35px;
-  margin-top: -4px;
+  margin-left: -32px;
+  /* margin-top: -6px; */
 }
 
 /* NAV */
@@ -452,8 +452,8 @@ main section {
   box-shadow: rgb(66 148 110 / 15%) 0px 4px 24px;
   border-radius: 0.75rem;
   text-align: left;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(5px);
   background-color: var(--dark-opaque);
 }
 
@@ -602,7 +602,7 @@ main section.hero {
 
 .speckle-bg {
   /* fill: var(--primary); */
-  width: 250vw;
+  width: 200vw;
   min-width: 100vw;
   min-height: 100vh;
   /* height: 100%;
@@ -872,7 +872,7 @@ main.who h2 {
   margin-bottom: 1rem;
 }
 
-main.who h3 {
+main h3 {
   margin-top: 1.5rem;
 }
 
@@ -884,18 +884,14 @@ main.who section p:first-of-type {
   margin-top: 0;
 }
 
-main.values h2 {
+/* main.values h2 {
   margin-bottom: 1rem;
   margin-top: 1.5rem;
 }
 
 main.values h2:first-child {
   margin-top: 0;
-}
-
-main.values h3 {
-  margin-top: 1.5rem;
-}
+} */
 
 main.values hr {
   margin: 1.5rem 0 0.5rem;
@@ -911,9 +907,9 @@ div.experience {
   max-width: 3000px;
 } */
 
-main div.experience h4 {
+main h4 {
   font-size: var(--text-md);
-  margin: 0;
+  margin: 1.5rem 0 0;
 }
 
 div.experience ul li {
@@ -930,18 +926,25 @@ div.headshot div p:first-of-type {
 } */
 
 #headshot {
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   margin-left: 10px;
   /* border: 1px solid var(--secondary); */
-  border: solid 1px hsl(152, 32%, 16%);
-  box-shadow: rgb(66 148 110 / 15%) 0px 4px 24px;
+  /* border: solid 1px hsl(152, 32%, 16%);
+  box-shadow: rgb(66 148 110 / 15%) 0px 4px 24px; */
   float: right;
+  background-color: transparent;
 
   /* position: absolute;
   top: 1.5rem;
   right: 1.5rem; */
+}
+
+#headshot img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: solid 1px hsl(152, 32%, 16%);
+  box-shadow: rgb(66 148 110 / 15%) 0px 4px 24px;
 }
 
 .primary {

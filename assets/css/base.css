@@ -17,11 +17,11 @@
   /* --dark: rgb(0, 19, 1); */
   /* --dark: rgb(0, 37, 37); */
   /* --dark: rgb(0, 32, 14); */
-  --dark: rgb(12, 26, 24);
+  --dark: #0c1a18;
   /* --dark: rgb(11, 34, 25); */
   /* --dark-opaque: rgba(0, 37, 37, 0.8); */
   /* --dark-opaque: rgba(0, 32, 14, 0.8); */
-  --dark-opaque: rgba(12, 26, 24, 0.7);
+  --dark-opaque: rgba(12, 26, 24, 0.75);
   /* --dark-opaque: rgba(11, 34, 25, 0.8); */
   /* --dark-opaque: rgba(0, 19, 1, 0.8); */
   /* --dark-opaque: rgba(12, 0, 41, 0.8); */
@@ -36,7 +36,7 @@
   --tablet: 768px;
   --desktop: 1024px;
   --header-height: 105px;
-  --header-height-lg: 110px;
+  --header-height-lg: 105px;
   --margin-lr: clamp(10px, 3.5vw, 25px);
   --padding-lr-sm: clamp(10px, 2.75vw, 30px);
   --padding-lr: clamp(1rem, 3vw, 25px);
@@ -44,7 +44,7 @@
   --text-sm: clamp(0.8rem, 2vw, 1.1rem);
   --text-md: clamp(0.9rem, 2.25vw, 1.2rem);
   --text-base: clamp(1rem, 3vw, 1.5rem);
-  --margin-lr-lg: clamp(15px, 4vw, 25px);
+  --margin-lr-lg: clamp(20px, 4vw, 40px);
   --padding-lr-lg: clamp(25px, 4vw, 50px);
   --text-lg: clamp(0.8rem, 2.75vw, 1.3rem);
 }

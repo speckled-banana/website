@@ -6,8 +6,13 @@
   header {
     position: relative;
     margin-bottom: 0;
-    padding-bottom: 0.5rem;
+    /* padding-bottom: 0.5rem; */
   }
+
+  .header-content .bottom-row {
+    margin-top: 85px;
+  }
+
   main section:first-of-type,
   main section.hero {
     margin-top: 1rem;
@@ -44,14 +49,17 @@
     right: 0;
   }
 
+  main {
+    padding: 0 var(--margin-lr-lg);
+  }
+
   #headshot {
-    width: 200px;
-    height: 200px;
     margin-top: -75px;
   }
 
-  main.who h2 {
-    margin-bottom: 1.5rem;
+  #headshot img {
+    width: 200px;
+    height: 200px;
   }
 
   main section {
@@ -62,6 +70,7 @@
 
   main h2 {
     font-size: clamp(1.3rem, 6.5vw, 3.5rem);
+    margin-bottom: 1.5rem;
   }
 
   main section:not(.hero) h2 {
@@ -73,11 +82,12 @@
   }
 
   main .hero h2 {
-    font-size: clamp(1.8rem, 8.5vw, 10rem);
+    font-size: clamp(1.8rem, 8.5vw, 7rem);
   }
 
   header {
-    padding: 0 var(--padding-lr-lg);
+    /* padding: 0 var(--padding-lr-lg); */
+    padding: 0 var(--margin-lr-lg);
     /* border-bottom: 1px solid var(--primary); */
   }
   footer {
@@ -116,12 +126,13 @@
     margin: 0;
   }
 
-  .brand .logo {
+  /* .brand .logo {
     font-size: 2rem;
-  }
+  } */
 
   .brand img {
-    margin-left: -35px;
+    margin-left: -30px;
+    margin-top: 2px;
   }
 
   header nav {
@@ -133,6 +144,7 @@
     margin: 0;
     height: var(--header-height-lg);
     flex-grow: 1;
+    margin-left: calc(var(--margin-lr-lg) * -1);
   }
   header nav menu {
     /* display: inline-block; */

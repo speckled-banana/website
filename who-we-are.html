@@ -15,27 +15,36 @@
       content="Speckled Banana Ltd"
     />
     <meta
+      name="publisher"
+      content="Speckled Banana Ltd"
+    />
+    <meta
       name="description"
-      content="Software development & technology consultancy specialising in privacy first, honest solutions."
+      content="Technology and software development consultancy specialising in privacy first, honest solutions for organisations with a purpose."
+    />
+    <meta
+      name="keywords"
+      content="Software development consultancy, technology consultancy, pro bono software development, pro bono technology consultancy, freelance software developer, privacy first, tech for good"
     />
     <link
       rel="stylesheet"
-      href="./assets/css/styles.css"
+      href="/assets/css/styles.css"
     />
-    <!-- <link
-      rel="preload"
-      as="image"
-      href="/assets/img/splatter.svg"
-    /> -->
     <script
-      src="./assets/js/contact.js"
       defer
+      src="/assets/js/contact.js"
     ></script>
     <script
-      src="./assets/js/sb.js"
       defer
+      src="/assets/js/sb.js"
     ></script>
-    <title>Speckled Banana - Software & Technology Consultancy</title>
+    <script
+      defer
+      data-domain="speckledbanana.com"
+      src="assets/js/plausible.js"
+    ></script>
+
+    <title>Speckled Banana - Technology and Software Development Consultancy</title>
 
     <!-- GRAPH -->
 
@@ -57,44 +66,36 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./assets/favicon/apple-touch-icon.png"
+      href="/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/assets/favicon/favicon-32x32.png"
+      href="/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="/assets/favicon/favicon-16x16.png"
+      href="/favicon-16x16.png"
     />
     <link
       rel="manifest"
-      href="/assets/favicon/site.webmanifest"
+      href="/site.webmanifest"
     />
     <link
       rel="mask-icon"
-      href="/assets/favicon/safari-pinned-tab.svg"
-      color="#0c0029"
-    />
-    <link
-      rel="shortcut icon"
-      href="/assets/favicon/favicon.ico"
+      href="/safari-pinned-tab.svg"
+      color="#ffd700"
     />
     <meta
       name="msapplication-TileColor"
       content="#2b5797"
     />
     <meta
-      name="msapplication-config"
-      content="/assets/favicon/browserconfig.xml"
-    />
-    <meta
       name="theme-color"
-      content="#ffffff"
+      content="#ffd700"
     />
 
     <link
@@ -104,8 +105,8 @@
   </head>
 
   <body>
-    <header class="">
-      <div class="header-content container column space-between">
+    <header>
+      <div class="header-content container column">
         <div class="top-row row">
           <!-- Brand / logo -->
           <div class="brand row">
@@ -114,11 +115,16 @@
               title="Speckled Banana Home Page"
             >
               <span class="logo">SPECKLED</span>
-              <img
-                alt="The Speckled Banana logo: A company logo with SPECKLED as text and a yellow paint splatter motif with a a banana shape cut out on right."
-                src="./assets/img/SpeckledSplatBright.png"
-                title="The Speckled Banana Logo"
-              />
+              <picture>
+                <source srcset="/assets/img/SpeckledLogo2022x1.5.webp 1.5x, /assets/img/SpeckledLogo2022x1.5.png 1.5x, /assets/img/SpeckledLogo2022x2.webp 2x, /assets/img/SpeckledLogo2022x2.png 2x, /assets/img/SpeckledLogo2022.webp" />
+                <img
+                  src="/assets/img/SpeckledLogo2022.png"
+                  alt="The Speckled Banana logo: A yellow paint splatter logo with a banana shape cut out of the middle."
+                  title="The Speckled Banana Logo"
+                  height="100"
+                  width="100"
+                />
+              </picture>
             </a>
           </div>
           <!-- Mobile burger -->
@@ -139,41 +145,50 @@
             <!-- Menu -->
             <menu class="nav">
               <li>
-                <a href="./who-we-are.html">Who We Are</a>
+                <a href="/who-we-are.html">Who We Are</a>
               </li>
               <li>
-                <a href="./values-and-principles.html">Our Values</a>
+                <a href="/values-and-principles.html">Our Values</a>
               </li>
               <li>
-                <a href="./contact-us.html">Contact Us</a>
+                <a href="/contact-us.html">Contact Us</a>
               </li>
             </menu>
           </nav>
         </div>
         <div class="bottom-row">
-          <h1 class="tag-line">Technology consultancy and fixed term staffing provider</h1>
+          <h1 class="tag-line">Technology and software development consultancy</h1>
         </div>
       </div>
     </header>
+    <div class="bg">
+      <img
+        class="speckle-bg"
+        src="/assets/img/splatter2.svg"
+        alt="A yellow paint splatter image that is used as a background for the website."
+        title="Yellow Paint Splatter Background Image"
+      />
+    </div>
     <main class="container who">
-      <div class="bg">
-        <img
-          class="speckle-bg"
-          src="/assets/img/splatter.svg"
-          alt="A yellow paint splatter image that is used as a background for the website."
-          src="./assets/img/SpeckledSplatBright.png"
-          title="Yellow Paint Splatter Background Image"
-        />
-      </div>
       <section>
         <h2>Who Are Speckled Banana</h2>
         <!-- <div class="row headshot"> -->
         <!-- <div> -->
-        <img
-          src="/assets/img/Headshot.jpg"
-          alt="Headshot image of Speckled Banana founder Sean Thompson"
-          id="headshot"
-        />
+        <picture id="headshot">
+          <source
+            media="(max-width: 767px)"
+            srcset="/assets/img/Headshot_80x1.5.webp 1.5x, /assets/img/Headshot_80x1.5.jpg 1.5x, /assets/img/Headshot_80x2.webp 2x
+ /assets/img/Headshot_80x2.jpg 2x, /assets/img/Headshot_80.webp"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="/assets/img/Headshot_200x1.5.webp 1.5x, /assets/img/Headshot_200x1.5.jpg 1.5x, /assets/img/Headshot_200x2.webp 2x, /assets/img/Headshot_200x2.jpg 2x, /assets/img/Headshot_200.webp, /assets/img/Headshot_200.jpg"
+          />
+          <img
+            src="/assets/img/Headshot.jpg"
+            alt="Headshot image of Speckled Banana founder Sean Thompson"
+          />
+        </picture>
         <p>For larger projects I have a number of specialist associates that can work alongside me, however, most of the time Speckled Banana is just me, Sean Thompson.</p>
         <!-- <p>Although, for larger projects I have a number of specialist associates that can work alongside me.</p> -->
         <!-- </div> -->
