@@ -40,11 +40,20 @@
   --margin-lr: clamp(10px, 3.5vw, 25px);
   --padding-lr-sm: clamp(10px, 2.75vw, 30px);
   --padding-lr: clamp(1rem, 3vw, 25px);
+  --text-base: clamp(1rem, 3vw, 1.5rem);
   --text-xs: clamp(0.6rem, 1.75vw, 0.9rem);
   --text-sm: clamp(0.8rem, 2vw, 1.1rem);
-  --text-md: clamp(0.9rem, 2.25vw, 1.2rem);
-  --text-base: clamp(1rem, 3vw, 1.5rem);
+  --text-md: clamp(0.8rem, 2.75vw, 1.3rem);
+  --text-lg: clamp(0.9rem, 4.5vw, 2.5rem);
+  --text-h1: clamp(1.3rem, 7.5vw, 4.5rem);
+  --text-h2: clamp(1.1rem, 6.5vw, 2.75rem);
+  --text-sm-tb: clamp(0.5rem, 1.2vw, 1rem);
+  --text-md-tb: clamp(0.9rem, 1.3vw, 1.75rem);
+  --text-h1-tb: clamp(1.3rem, 6.5vw, 3.5rem);
+  --text-h2-tb: clamp(0.9rem, 4.25vw, 3rem);
+  --text-h3-tb: clamp(0.9rem, 3.75vw, 2.25rem);
+  --text-nav: clamp(0.9rem, 6vw, 4.5rem);
+
   --margin-lr-lg: clamp(20px, 4vw, 40px);
   --padding-lr-lg: clamp(25px, 4vw, 50px);
-  --text-lg: clamp(0.8rem, 2.75vw, 1.3rem);
 }

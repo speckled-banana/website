@@ -9,7 +9,7 @@
     /* padding-bottom: 0.5rem; */
   }
 
-  .header-content .bottom-row {
+  span.tag-line {
     margin-top: 85px;
   }
 
@@ -23,10 +23,14 @@
   }
 
   .side-menu:checked ~ nav menu {
-    padding-top: 50px;
+    padding-top: 15px;
     position: fixed;
     top: 0;
     left: 0;
+  }
+
+  header nav menu li {
+    font-size: var(--text-lg);
   }
 }
 
@@ -37,9 +41,14 @@
     display: none;
   }
 
+  span.tag-line {
+    font-size: 1rem;
+    margin-top: 85px;
+  }
+
   body,
   li {
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
   }
 
   header {
@@ -53,10 +62,6 @@
     padding: 0 var(--margin-lr-lg);
   }
 
-  #headshot {
-    margin-top: -75px;
-  }
-
   #headshot img {
     width: 200px;
     height: 200px;
@@ -68,21 +73,38 @@
 
   /* HEADER & NAV */
 
-  main h2 {
-    font-size: clamp(1.3rem, 6.5vw, 3.5rem);
+  main h1 {
+    font-size: var(--text-h1-tb);
     margin-bottom: 1.5rem;
   }
 
-  main section:not(.hero) h2 {
+  /* main section:not(.hero) h1 {
+    margin-top: rem;
+  } */
+
+  main .hero h1 {
+    font-size: clamp(1.8rem, 8.5vw, 7rem);
+  }
+
+  main.privacy h2 {
+    margin-top: 3rem;
+  }
+
+  main h2 {
+    font-size: var(--text-h2-tb);
+  }
+
+  main h2:not(:first-child) {
+    margin-top: 2.5rem;
+  }
+
+  main h3 {
+    font-size: var(--text-h3-tb);
     margin-top: 2rem;
   }
 
   main .services-container h3 {
-    font-size: clamp(1.1rem, 2.75vw, 2rem);
-  }
-
-  main .hero h2 {
-    font-size: clamp(1.8rem, 8.5vw, 7rem);
+    font-size: clamp(0.9rem, 3.5vw, 1.75rem);
   }
 
   header {
@@ -95,7 +117,7 @@
   }
 
   main section:not(.hero) {
-    padding: 2.5rem var(--padding-lr-lg);
+    padding: 3.5rem var(--padding-lr-lg);
   }
 
   main section:not(:first-of-type) {
@@ -110,13 +132,9 @@
     padding: 7rem var(--padding-lr-lg);
   }
 
-  .header-content .bottom-row {
-    margin-top: 85px;
-  }
-
-  .tag-line {
+  /* .tag-line {
     font-size: 1rem;
-  }
+  } */
 
   .header-content {
     height: var(--header-height-lg);
@@ -199,14 +217,6 @@
     scroll-margin-top: calc(var(--header-height-lg) + 3rem);
   }
 
-  /* main .services-container h3 {
-    font-size: 1.6rem;
-  } */
-
-  /* main .services-container li span {
-    font-size: 1.3rem;
-  } */
-
   /* HERO */
 
   footer .brand .logo {
@@ -226,25 +236,16 @@
   }
 
   div.experience {
-    grid-template-columns: repeat(auto-fit, clamp(140px, 11vw, 157px));
+    grid-template-columns: repeat(auto-fit, clamp(130px, 10vw, 155px));
   }
 
-  main div.experience h4 {
-    font-size: var(--text-xs);
+  main div.experience h3 {
+    font-size: var(--text-md-tb);
   }
 
-  /* main.privacy-policy h2 {
-    font-size: 2.5rem;
+  div.experience ul li {
+    font-size: var(--text-sm-tb);
   }
-  main.privacy-policy h3 {
-    font-size: 1.8rem;
-    margin-top: 3rem;
-  }
-
-  main.privacy-policy li {
-    margin-bottom: 0.25rem;
-    font-size: 1.1rem;
-  } */
 }
 
 /* SMALL LAPTOP & ABOVE */
@@ -261,7 +262,14 @@
 @media (min-width: 1280px) {
   /* HERO */
 
-  main div.experience h4 {
+  main .services-container h3 {
+    font-size: clamp(0.9rem, 3.75vw, 2.15rem);
+  }
+  main div.experience h3 {
     font-size: var(--text-sm);
+  }
+
+  #headshot {
+    margin-top: -75px;
   }
 }

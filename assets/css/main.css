@@ -1,12 +1,5 @@
 @import 'base.css';
 
-/* Additional Reset / Base Styles */
-/* 
-html,
-body {
-  overflow: hidden;
-} */
-
 html:has(.side-menu:checked),
 body:has(.side-menu:checked) {
   overflow: hidden;
@@ -39,20 +32,28 @@ h6 {
   color: var(--light-text);
 }
 
+main h1 {
+  font-size: var(--text-h1);
+}
+
 main h2 {
-  font-size: clamp(1.3rem, 6.5vw, 3rem);
-}
-
-main h3 {
-  font-size: clamp(1.1rem, 6vw, 2.25rem);
-  margin-top: 3rem;
-}
-
-main h3.home {
+  font-size: var(--text-h2);
   margin-top: 0;
 }
 
-main .hero h2 {
+main h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+main.who h2:last-of-type {
+  margin-top: 0;
+}
+
+/* main h2.home {
+  margin-top: 0;
+} */
+
+main .hero h1 {
   font-size: clamp(1.7rem, 8vw, 3.25rem);
   margin: 0;
 
@@ -68,40 +69,17 @@ main .hero h2 {
   /* box-decoration-break: clone; */
 }
 
-main .glow-text h2 {
-  /* text-shadow: rgba(60, 175, 58, 0.749) 0px 0px 10px; */
-  /* color: hsl(152, 38%, 70%); */
-  /* background-color: var(--light-text);
-  padding: 0 5px;
-  color: var(--dark); */
-}
-
-/* main.home h2,
-main.home h3 {
-  color: var(--light-text);
-} */
 h1::after,
 main h2::after,
 main h3::after,
 main h4::after,
 header nav li a::after,
-footer nav li a::after {
+footer nav li a::after,
+span.tag-line::after {
   content: '.';
   color: var(--dots);
   margin-left: 0.1em;
 }
-
-/* h1::after,
-main.home h2::after,
-main.home h3::after,
-header nav li a::after,
-footer nav li a::after {
-  color: var(--dots);
-} */
-
-/* strong {
-  color: var(--secondary);
-} */
 
 a {
   color: var(--light-text);
@@ -127,22 +105,19 @@ ol {
 li {
   font-size: var(--text-base);
   margin-bottom: 0.25rem;
-  margin-left: var(--padding-lr);
+  margin-left: var(--text-base);
   color: var(--light-text);
   line-height: 1.35em;
 }
 
-ul li::before {
-  font-size: var(--text-sm);
-}
-
 main ul li::before {
+  font-size: var(--text-base);
   content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: var(--dots); /* Change the color */
   font-weight: bold; /* If you want it to be bold */
   display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1em; /* Also needed for space (tweak if needed) */
-  margin-left: -1em; /* Also needed for space (tweak if needed) */
+  width: var(--text-base); /* Also needed for space (tweak if needed) */
+  margin-left: calc(var(--text-base) * -1); /* Also needed for space (tweak if needed) */
 }
 
 /* ol li {
@@ -261,10 +236,16 @@ header .top-row {
   justify-content: space-between;
 }
 
-.tag-line {
+span.tag-line {
   /* text-transform: uppercase; */
   font-size: clamp(0.46rem, 2.5vw, 0.8rem);
   color: var(--light-grey);
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 90px;
+  position: absolute;
+  z-index: 60;
   /* margin-bottom: 1rem; */
   /* color: var(--secondary); */
 }
@@ -289,15 +270,6 @@ nav a:visited,
 
 .header-content {
   height: var(--header-height);
-}
-
-.header-content .bottom-row {
-  /* background: var(--dark); */
-  /* color: var(--light-text); */
-  display: block;
-  margin-top: 90px;
-  position: absolute;
-  z-index: 60;
 }
 
 .brand {
@@ -362,10 +334,10 @@ header nav menu li {
   display: block;
   padding: 15px 15px 15px 20px;
   margin-left: var(--padding-lr-sm);
-  font-size: var(--text-lg);
+  font-size: var(--text-nav);
 }
 
-@media (max-height: 400px) {
+/* @media (max-height: 400px) {
   header nav menu {
     padding-top: 10px;
   }
@@ -373,7 +345,7 @@ header nav menu li {
   header nav menu li {
     padding: 10px 10px 10px 20px;
   }
-}
+} */
 
 /* BURGER ICON */
 
@@ -464,7 +436,7 @@ main section:not(.hero) {
   /* margin-right: -20px; */
   /* padding: 2em 0;*/
 
-  padding: 1.4rem var(--padding-lr);
+  padding: 1.6rem var(--padding-lr);
   margin: 1rem 0;
   /* border: 4px solid var(--secondary); */
   /* border: 1px solid rgba(45, 255, 196, 0.4); */
@@ -491,75 +463,25 @@ main section:first-of-type {
 }
 
 main section i {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 main.privacy-policy section {
   background-color: var(--dark);
 }
 
-/* 
-main.home h2 {
-  font-size: 6.25vw;
-}
-main.home h3 {
-  font-size: 5.5vw;
-} */
-
 main .services-container {
   display: flex;
   flex-direction: column;
 }
 
-main .services-container h3 {
+main .services-container h2 {
   margin-top: 0.5rem;
 }
 
 main div.services-container li {
   line-height: 1.35em;
-  /* margin-bottom: 0.5rem; */
-  /* margin-top: -0.5rem; */
-  /* padding-left: 0.75rem; */
-  /* text-indent: -0.75rem; */
-  /* position: relative; */
 }
-
-/* main div.services-container li::before {
-
-  position: absolute;
-  margin-left: 0;
-  margin-top: 2px;
-}
-
-main div.services-container li span {
-  margin-left: 0.75rem;
-}
-
-main div.services-container h3 {
-  margin-top: 0;
-}
-
-main div.services li::before {
-  content: '✅ ';
-
-}
-
-main div.values li::before {
-  content: '❌ ';
-
-}
-
-@media (min-width: 550px) {
-  main div.services-container li::before {
-    margin-top: 3px;
-  }
-}
-
-@media (min-width: 600px) {
-  main div.services-container li::before {
-    margin-top: 4px;
-  }
-} */
 
 main section.hero {
   /* display: flex; */
@@ -584,21 +506,6 @@ main section.hero {
   /* border: none; */
   border-color: var(--primary-opaque);
 }
-
-/* .tag-line {
-  background: var(--secondary-opaque);
-  box-shadow: 15px 0 0 0 var(--secondary);
-  color: var(--dark);
-  margin: 0 3rem 3rem;
-  padding: 10px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  text-align: center;
-} */
-
-/* li.card h3 {
-  font-weight: normal;
-} */
 
 .speckle-bg {
   /* fill: var(--primary); */
@@ -661,8 +568,8 @@ form.contact {
   display: block;
 }
 
-#contact-placeholder.success > *:not(.contact-status-message):not(h2),
-#contact-placeholder.failure > *:not(.contact-status-message):not(h2) {
+#contact-placeholder.success > *:not(.contact-status-message):not(h1),
+#contact-placeholder.failure > *:not(.contact-status-message):not(h1) {
   display: none;
 }
 
@@ -850,12 +757,6 @@ div.p-c {
   text-align: center;
 }
 
-.underline {
-  text-decoration: underline;
-  color: var(--secondary);
-  background-color: var(--light-text);
-}
-
 .light-text {
   color: var(--text-light);
 }
@@ -863,35 +764,6 @@ div.p-c {
 main.who ul.projects {
   flex-wrap: wrap;
 }
-
-/* main.who ul.projects li {
-  width: 45%;
-} */
-
-main.who h2 {
-  margin-bottom: 1rem;
-}
-
-main h3 {
-  margin-top: 1.5rem;
-}
-
-main.who h3:first-of-type {
-  margin-top: 2rem;
-}
-
-main.who section p:first-of-type {
-  margin-top: 0;
-}
-
-/* main.values h2 {
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
-}
-
-main.values h2:first-child {
-  margin-top: 0;
-} */
 
 main.values hr {
   margin: 1.5rem 0 0.5rem;
@@ -903,27 +775,35 @@ div.experience {
   grid-template-columns: repeat(auto-fit, 40vw);
   justify-content: space-between;
 }
-/* div.experience div {
-  max-width: 3000px;
-} */
 
-main h4 {
-  font-size: var(--text-md);
-  margin: 1.5rem 0 0;
+main h3 {
+  font-size: var(--text-lg);
+  /* margin: 1.5rem 0 0; */
+}
+
+div.experience div h3 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+div.experience ul {
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+}
+div.experience div:last-child ul {
+  margin-bottom: 0;
 }
 
 div.experience ul li {
+  font-size: var(--text-sm);
+  line-height: 1.2em;
+  margin-left: var(--text-xs);
+}
+
+div.experience ul li::before {
   font-size: var(--text-xs);
-  margin-left: 15px;
+  width: var(--text-xs); /* Also needed for space (tweak if needed) */
+  margin-left: calc(var(--text-xs) * -1); /* Also needed for space (tweak if needed) */
 }
-
-/* div.headshot {
-  margin-top: 1rem;
-}
-
-div.headshot div p:first-of-type {
-  margin: 0;
-} */
 
 #headshot {
   /* border-radius: 50%; */
