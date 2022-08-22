@@ -110,7 +110,7 @@ const sendMsg = async () => {
 
   const formData = new FormData(form);
 
-  await fetch('http://localhost:3000/contact', {
+  await fetch('https://contact.speckledbanana.com/contact', {
     method: 'POST',
     body: formData,
   })
