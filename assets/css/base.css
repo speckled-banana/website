@@ -2,6 +2,7 @@
   --primary: #ffd700;
   --primary-opaque: rgba(255, 215, 0, 0.3);
   --secondary: #fefe49;
+  --alert: #16302d;
   --dark: #0c1a18;
   --dark-opaque: rgba(12, 26, 24, 0.85);
   --light-text: rgb(238, 238, 238);
@@ -17,7 +18,7 @@
   --text-lg: clamp(0.9rem, 4.5vw, 2.5rem);
   --text-h1: clamp(1.3rem, 7.5vw, 4.5rem);
   --text-h2: clamp(1.1rem, 6.5vw, 2.75rem);
-  --text-sm-tb: clamp(0.5rem, 1.2vw, 1rem);
+  --text-sm-tb: clamp(0.5rem, 1.1vw, 1rem);
   --text-md-tb: clamp(0.9rem, 1.3vw, 1.75rem);
   --text-h1-tb: clamp(1.3rem, 6.5vw, 3.5rem);
   --text-h2-tb: clamp(0.9rem, 4.25vw, 3rem);

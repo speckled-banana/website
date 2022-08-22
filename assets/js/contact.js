@@ -1,4 +1,5 @@
 const page = window.location;
+let clickOutside;
 const formTitle = `<h2>Contact Speckled Banana</h2>`;
 const formIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
           <p>
@@ -64,11 +65,9 @@ const formHTML = `<form onsubmit="sendMsg()"
     >
       Send Message
     </button>
+    <div id="form-sending"><div class="sending">Sending<span></span></div></div>
   </form>
-     <div
-          class="contact-status-message"
-          id="contact-status-message"
-        ></div>`;
+     `;
 
 const placeholder = document.getElementById('contact-placeholder');
 if (placeholder) {
@@ -78,7 +77,6 @@ if (placeholder) {
 const form = document.getElementById('contact-form');
 const gdpr = document.getElementById('gdpr');
 const submitBtn = document.getElementById('contact-submit-button');
-const statusMsg = document.getElementById('contact-status-message');
 
 let errCount = 0;
 if (form) {
@@ -105,12 +103,12 @@ if (gdpr) {
 }
 
 const sendMsg = async () => {
-  form.disabled = true;
+  form.elements.disabled = true;
   form.classList.toggle('loading', true);
 
   const formData = new FormData(form);
-
-  await fetch('https://contact.speckledbanana.com/contact', {
+  //  await fetch('https://contact.speckledbanana.com/contact', {
+  await fetch('http://localhost:3000/contact', {
     method: 'POST',
     body: formData,
   })
@@ -122,9 +120,10 @@ const sendMsg = async () => {
     })
     .then((res) => {
       form.classList.toggle('loading', false);
-      form.disabled = false;
-      statusMsg.innerHTML = "<p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p>";
-      placeholder.classList.toggle('success', true);
+      form.elements.disabled = false;
+      // statusMsg.innerHTML = "<div><p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p></div>";
+      alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 5000);
+      form.classList.toggle('success', true);
       scrollMsg();
       setTimeout(() => resetForm(), 5000);
     })
@@ -135,32 +134,45 @@ const sendMsg = async () => {
 
 const processErr = () => {
   form.classList.toggle('loading', false);
-  form.disabled = false;
-  placeholder.classList.toggle('failure', true);
+  form.elements.disabled = false;
+  form.classList.toggle('failure', true);
   if (errCount == 0) {
-    statusMsg.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
+    // statusMsg.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
+    alertHandler("<p>Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>", 'failure', 3000);
     setTimeout(() => resetForm('failure'), 3000);
   } else {
-    statusMsg.innerHTML = `<p>❌ Sorry, something is still broken.</p>
+    // statusMsg.innerHTML = `<div><p>❌ Sorry, something is still broken.</p>
+    //       <p>
+    //         <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
+    //       <p>Alternatively give us a call on +44 (0)208 0584946</p></div>`;
+    alertHandler(
+      `<p>Sorry, something is still broken.</p>
           <p>
             <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
-          <p>Alternatively give us a call on +44 (0)208 0584946</p>`;
+          <p>Alternatively give us a call on +44 (0)208 0584946</p>`,
+      'failure'
+    );
   }
   scrollMsg();
 };
 
 const resetForm = (err) => {
   if (!err) {
-    placeholder.classList.toggle('success', false);
-    document.getElementById('contact-email').value = null;
-    document.getElementById('contact-message').value = null;
-    document.getElementById('contact-info').value = null;
-    gdpr.checked = false;
+    form.classList.toggle('success', false);
   } else {
-    errCount++;
-    placeholder.classList.toggle('failure', false);
+    form.classList.toggle('failure', false);
+
+    if (errCount === 0) {
+      errCount++;
+      return;
+    }
+    errCount = 0;
   }
-  statusMsg.innerHTML = null;
+
+  document.getElementById('contact-email').value = null;
+  document.getElementById('contact-message').value = null;
+  document.getElementById('contact-info').value = null;
+  gdpr.checked = false;
 };
 
 const scrollMsg = () => window.scrollTo({ behaviour: 'smooth', top: findPosition(placeholder) });
@@ -175,3 +187,68 @@ const findPosition = (obj) => {
     return [top];
   }
 };
+
+const alertHandler = (message, alertClass, timeout = 0) => {
+  const alerts = document.getElementById('alert-container');
+  if (clickOutside) document.removeEventListener(clickOutside);
+
+  if (alerts.childElementCount < 2) {
+    // Create alert box
+    const alertBox = document.createElement('div');
+    alertBox.classList.add('alert', 'slide-in', alertClass);
+
+    const alertIcon = document.createElement('div');
+    alertIcon.classList.add('alert-icon');
+
+    const icon = document.createTextNode(alertClass === 'success' ? '✅' : '❌');
+    alertIcon.appendChild(icon);
+
+    const alertMsg = document.createElement('div');
+    alertMsg.classList.add('alert-msg');
+    alertMsg.innerHTML += message;
+
+    const close = document.createElement('span');
+    close.classList.add('close-btn');
+
+    alertBox.appendChild(alertIcon);
+    alertBox.appendChild(alertMsg);
+
+    // // Add message to alert box
+    // const alertMsg = document.create(message);
+    // alertBox.appendChild(alertMsg);
+
+    // Add alert box to parent
+    alerts.insertBefore(alertBox, alerts.childNodes[0]);
+    const x = document.createTextNode('X');
+    close.appendChild(x);
+    close.onclick = () => {
+      slideOut(alerts.childNodes[0]);
+      resetForm('failure');
+    };
+    alertBox.appendChild(close);
+
+    // Remove last alert box
+    if (alerts.childNodes.length > 1) {
+      slideOut(alerts.childNodes[1]);
+    }
+
+    if (timeout > 0) {
+      setTimeout(function () {
+        slideOut(alerts.childNodes[0]);
+        // alerts.removeChild(alerts.lastChild);
+      }, timeout);
+    } else {
+      clickOutside = document.addEventListener('click', outsideClickListener(alerts.childNodes[0]));
+    }
+  }
+};
+
+const outsideClickListener =
+  (element) =>
+  ({ target }) => {
+    if (!element.contains(target)) {
+      slideOut(element);
+    }
+  };
+
+const slideOut = (element) => element.classList.add('slide-out');
