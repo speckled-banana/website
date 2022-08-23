@@ -13,16 +13,17 @@
 }
 
 #alert-container .alert {
+  width: 90vw;
   display: grid;
   grid-template-columns: 50px auto;
   flex-direction: column;
-  background: var(--dark-opaque);
+  background: var(--dark);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  bottom: 50px;
+  bottom: 100px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   /* left: 50px; */
-  margin: 0 auto;
+  margin: auto 5vw;
   padding: 1.5rem;
   position: fixed;
   z-index: 99;
@@ -71,16 +72,16 @@
 
 .slide-in {
   animation-name: slideIn;
-  animation-duration: 0.8s;
+  animation-duration: 1s;
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(-400px);
+    transform: translateY(-400px);
   }
 
   to {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -99,5 +100,16 @@
   to {
     transform: translateY(800px);
     opacity: 0;
+  }
+}
+
+/* TODO: sort out alert positioning on all devices */
+
+@media (min-width: 768px) {
+  #alert-container .alert {
+    width: 50%;
+    /* bottom: 100px; */
+
+    margin: auto 25%;
   }
 }

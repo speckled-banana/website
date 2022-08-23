@@ -1,5 +1,5 @@
 const page = window.location;
-let clickOutside;
+let currentAlert;
 const formTitle = `<h2>Contact Speckled Banana</h2>`;
 const formIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
           <p>
@@ -122,10 +122,10 @@ const sendMsg = async () => {
       form.classList.toggle('loading', false);
       form.elements.disabled = false;
       // statusMsg.innerHTML = "<div><p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p></div>";
-      alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 5000);
       form.classList.toggle('success', true);
+      alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 5000);
       scrollMsg();
-      setTimeout(() => resetForm(), 5000);
+      // setTimeout(() => resetForm(), 5000);
     })
     .catch((err) => {
       processErr();
@@ -138,8 +138,8 @@ const processErr = () => {
   form.classList.toggle('failure', true);
   if (errCount == 0) {
     // statusMsg.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
+    // setTimeout(() => resetForm('failure'), 3000);
     alertHandler("<p>Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>", 'failure', 3000);
-    setTimeout(() => resetForm('failure'), 3000);
   } else {
     // statusMsg.innerHTML = `<div><p>❌ Sorry, something is still broken.</p>
     //       <p>
@@ -157,6 +157,8 @@ const processErr = () => {
 };
 
 const resetForm = (err) => {
+  console.log(errCount);
+  removeClickOutside();
   if (!err) {
     form.classList.toggle('success', false);
   } else {
@@ -173,6 +175,7 @@ const resetForm = (err) => {
   document.getElementById('contact-message').value = null;
   document.getElementById('contact-info').value = null;
   gdpr.checked = false;
+  // removeClickOutside();
 };
 
 const scrollMsg = () => window.scrollTo({ behaviour: 'smooth', top: findPosition(placeholder) });
@@ -190,7 +193,6 @@ const findPosition = (obj) => {
 
 const alertHandler = (message, alertClass, timeout = 0) => {
   const alerts = document.getElementById('alert-container');
-  if (clickOutside) document.removeEventListener(clickOutside);
 
   if (alerts.childElementCount < 2) {
     // Create alert box
@@ -219,26 +221,28 @@ const alertHandler = (message, alertClass, timeout = 0) => {
 
     // Add alert box to parent
     alerts.insertBefore(alertBox, alerts.childNodes[0]);
+    currentAlert = alerts.childNodes[0];
+
     const x = document.createTextNode('X');
     close.appendChild(x);
     close.onclick = () => {
-      slideOut(alerts.childNodes[0]);
-      resetForm('failure');
+      slideOut(currentAlert);
     };
     alertBox.appendChild(close);
 
+    document.addEventListener('click', outsideClickListener(currentAlert));
+
     // Remove last alert box
     if (alerts.childNodes.length > 1) {
-      slideOut(alerts.childNodes[1]);
+      alerts.removeChild(alerts.lastChild);
+      // slideOut(alerts.childNodes[1]);
     }
 
     if (timeout > 0) {
       setTimeout(function () {
-        slideOut(alerts.childNodes[0]);
-        // alerts.removeChild(alerts.lastChild);
+        slideOut(currentAlert);
+        //
       }, timeout);
-    } else {
-      clickOutside = document.addEventListener('click', outsideClickListener(alerts.childNodes[0]));
     }
   }
 };
@@ -248,7 +252,18 @@ const outsideClickListener =
   ({ target }) => {
     if (!element.contains(target)) {
       slideOut(element);
+      // resetForm(element.classList.contains('failure') ? 'failure' : '');
     }
   };
 
-const slideOut = (element) => element.classList.add('slide-out');
+const slideOut = (element) => {
+  element.classList.add('slide-out');
+  resetForm(element.classList.contains('failure') ? 'failure' : '');
+};
+
+const removeClickOutside = () => {
+  console.log('removeClickOutside');
+  console.log(currentAlert);
+  document.removeEventListener('click', outsideClickListener(currentAlert));
+};
+// TODO: Click handler removal not working

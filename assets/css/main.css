@@ -549,8 +549,8 @@ form.contact {
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   position: fixed;
-  width: calc(100% - (var(--padding-lr)));
-  margin-left: calc(var(--padding-lr) * -2);
+  width: 100%;
+  /* margin-left: calc(var(--padding-lr) * -2); */
   /* height: 100%; */
   top: 0;
   bottom: 0;
@@ -567,7 +567,9 @@ form.contact {
   border: 1px solid rgba(142, 148, 66, 0.846);
 }
 
-#contact-form.loading #form-sending {
+#contact-form.loading #form-sending,
+#contact-form.success #form-sending,
+#contact-form.failure #form-sending {
   visibility: visible;
   opacity: 1;
 }
@@ -577,7 +579,7 @@ form.contact {
 #contact-form.failure .form-inputs {
   display: none;
 } */
-/* 
+
 #contact-form.success #form-sending {
   box-shadow: rgba(80, 148, 66, 0.15) 0px 4px 24px;
   border: 1px solid rgba(80, 148, 66, 0.846);
@@ -586,7 +588,7 @@ form.contact {
 #contact-form.failure #form-sending {
   box-shadow: rgba(148, 66, 66, 0.15) 0px 4px 24px;
   border: 1px solid rgba(148, 66, 66, 0.846);
-} */
+}
 
 #contact-form div.sending,
 #contact-form div.sending:before,
@@ -618,7 +620,7 @@ form.contact {
   font-size: 20px;
   color: var(--primary);
   letter-spacing: 4px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-shadow: 0 0 10px var(--primary);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
