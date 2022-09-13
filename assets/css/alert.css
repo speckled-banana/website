@@ -1,7 +1,6 @@
 #alert-container {
   z-index: 1;
   position: absolute;
-  /* width: 100vw; */
 }
 
 #alert-container p:first-of-type {
@@ -13,21 +12,18 @@
 }
 
 #alert-container .alert {
-  width: 90vw;
   display: grid;
   grid-template-columns: 50px auto;
   flex-direction: column;
   background: var(--dark);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  bottom: 100px;
+  top: 30%;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  /* left: 50px; */
-  margin: auto 5vw;
+  margin: 0 var(--margin-lr);
   padding: 1.5rem;
   position: fixed;
   z-index: 99;
-  /* width: 40vw; */
   border-radius: 0.75rem;
 }
 
@@ -42,9 +38,9 @@
 
 #alert-container .close-btn {
   cursor: pointer;
-  position: fixed;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   padding: 20px;
 }
 
@@ -56,19 +52,6 @@
   box-shadow: rgba(148, 66, 66, 0.15) 0px 4px 24px;
   border: 1px solid rgba(148, 66, 66, 0.846);
 }
-
-/* #alert-container .alert:before {
-  font-size: 1.5em;
-  font-weight: 600;
-  margin-right: 10px;
-
-}
-#alert-container .alert-msg.success:before {
-  content: '✅';
-}
-#alert-container .alert-msg.failure:before {
-  content: '❌';
-} */
 
 .slide-in {
   animation-name: slideIn;
@@ -100,16 +83,5 @@
   to {
     transform: translateY(800px);
     opacity: 0;
-  }
-}
-
-/* TODO: sort out alert positioning on all devices */
-
-@media (min-width: 768px) {
-  #alert-container .alert {
-    width: 50%;
-    /* bottom: 100px; */
-
-    margin: auto 25%;
   }
 }

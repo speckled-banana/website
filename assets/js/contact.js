@@ -1,9 +1,10 @@
 const page = window.location;
+const contactServer = 'https://contact.speckledbanana.com/contact';
 let currentAlert;
 const formTitle = `<h2>Contact Speckled Banana</h2>`;
 const formIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
           <p>
-            +44 (0)208 0584946 or
+            +44 (0)7934 579448 or
             <a href="mailto:hello@speckledbanana.com">hello@speckledbanana.com</a>.
           </p>
 
@@ -107,8 +108,7 @@ const sendMsg = async () => {
   form.classList.toggle('loading', true);
 
   const formData = new FormData(form);
-  //  await fetch('https://contact.speckledbanana.com/contact', {
-  await fetch('http://localhost:3000/contact', {
+  await fetch(contactServer, {
     method: 'POST',
     body: formData,
   })
@@ -121,74 +121,12 @@ const sendMsg = async () => {
     .then((res) => {
       form.classList.toggle('loading', false);
       form.elements.disabled = false;
-      // statusMsg.innerHTML = "<div><p>✅ Message sent.</p><p>We'll be in touch as soon as possible.</p></div>";
       form.classList.toggle('success', true);
       alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 5000);
-      scrollMsg();
-      // setTimeout(() => resetForm(), 5000);
     })
     .catch((err) => {
       processErr();
     });
-};
-
-const processErr = () => {
-  form.classList.toggle('loading', false);
-  form.elements.disabled = false;
-  form.classList.toggle('failure', true);
-  if (errCount == 0) {
-    // statusMsg.innerHTML = "<p>❌ Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>";
-    // setTimeout(() => resetForm('failure'), 3000);
-    alertHandler("<p>Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>", 'failure', 3000);
-  } else {
-    // statusMsg.innerHTML = `<div><p>❌ Sorry, something is still broken.</p>
-    //       <p>
-    //         <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
-    //       <p>Alternatively give us a call on +44 (0)208 0584946</p></div>`;
-    alertHandler(
-      `<p>Sorry, something is still broken.</p>
-          <p>
-            <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
-          <p>Alternatively give us a call on +44 (0)208 0584946</p>`,
-      'failure'
-    );
-  }
-  scrollMsg();
-};
-
-const resetForm = (err) => {
-  console.log(errCount);
-  removeClickOutside();
-  if (!err) {
-    form.classList.toggle('success', false);
-  } else {
-    form.classList.toggle('failure', false);
-
-    if (errCount === 0) {
-      errCount++;
-      return;
-    }
-    errCount = 0;
-  }
-
-  document.getElementById('contact-email').value = null;
-  document.getElementById('contact-message').value = null;
-  document.getElementById('contact-info').value = null;
-  gdpr.checked = false;
-  // removeClickOutside();
-};
-
-const scrollMsg = () => window.scrollTo({ behaviour: 'smooth', top: findPosition(placeholder) });
-
-const findPosition = (obj) => {
-  const headerOffset = document.querySelector('header').getBoundingClientRect().bottom + 20;
-  let top = 0;
-  if (obj.offsetParent) {
-    do {
-      top += obj.offsetTop - headerOffset;
-    } while ((obj = obj.offsetParent));
-    return [top];
-  }
 };
 
 const alertHandler = (message, alertClass, timeout = 0) => {
@@ -209,33 +147,29 @@ const alertHandler = (message, alertClass, timeout = 0) => {
     alertMsg.classList.add('alert-msg');
     alertMsg.innerHTML += message;
 
-    const close = document.createElement('span');
-    close.classList.add('close-btn');
-
+    // Append elements to alert
     alertBox.appendChild(alertIcon);
     alertBox.appendChild(alertMsg);
 
-    // // Add message to alert box
-    // const alertMsg = document.create(message);
-    // alertBox.appendChild(alertMsg);
+    // If no timeout add a close button
+    if (timeout === 0) {
+      const close = document.createElement('span');
+      close.textContent = 'X';
+      close.classList.add('close-btn');
+      close.onclick = () => {
+        slideOut(currentAlert);
+      };
+
+      alertBox.appendChild(close);
+    }
 
     // Add alert box to parent
     alerts.insertBefore(alertBox, alerts.childNodes[0]);
     currentAlert = alerts.childNodes[0];
 
-    const x = document.createTextNode('X');
-    close.appendChild(x);
-    close.onclick = () => {
-      slideOut(currentAlert);
-    };
-    alertBox.appendChild(close);
-
-    document.addEventListener('click', outsideClickListener(currentAlert));
-
     // Remove last alert box
     if (alerts.childNodes.length > 1) {
       alerts.removeChild(alerts.lastChild);
-      // slideOut(alerts.childNodes[1]);
     }
 
     if (timeout > 0) {
@@ -247,23 +181,44 @@ const alertHandler = (message, alertClass, timeout = 0) => {
   }
 };
 
-const outsideClickListener =
-  (element) =>
-  ({ target }) => {
-    if (!element.contains(target)) {
-      slideOut(element);
-      // resetForm(element.classList.contains('failure') ? 'failure' : '');
-    }
-  };
-
 const slideOut = (element) => {
   element.classList.add('slide-out');
   resetForm(element.classList.contains('failure') ? 'failure' : '');
 };
 
-const removeClickOutside = () => {
-  console.log('removeClickOutside');
-  console.log(currentAlert);
-  document.removeEventListener('click', outsideClickListener(currentAlert));
+const processErr = () => {
+  form.classList.toggle('loading', false);
+  form.elements.disabled = false;
+  form.classList.toggle('failure', true);
+  if (errCount == 0) {
+    alertHandler("<p>Sorry, that message didn't send.</p><p>Hopefully it was just a momentary blip, please retry.</p>", 'failure', 3000);
+  } else {
+    alertHandler(
+      `<p>Sorry, something is still broken.</p>
+          <p>
+            <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
+          <p>Alternatively give us a call on +44 (0)7934 579448</p>`,
+      'failure'
+    );
+  }
 };
-// TODO: Click handler removal not working
+
+const resetForm = (err) => {
+  console.log(errCount);
+  if (!err) {
+    form.classList.toggle('success', false);
+  } else {
+    form.classList.toggle('failure', false);
+
+    if (errCount === 0) {
+      errCount++;
+      return;
+    }
+    errCount = 0;
+  }
+
+  document.getElementById('contact-email').value = null;
+  document.getElementById('contact-message').value = null;
+  document.getElementById('contact-info').value = null;
+  gdpr.checked = false;
+};

@@ -478,11 +478,6 @@ div.experience ul li::before {
   display: block;
 }
 
-/* #contact-form.success > *:not(.contact-status-message):not(h1),
-#contact-form.failure > *:not(.contact-status-message):not(h1) {
-  display: none;
-} */
-
 #contact-form {
   display: flex;
   flex-direction: column;
@@ -490,55 +485,9 @@ div.experience ul li::before {
   height: 100%;
 }
 
-/* #contact-form .form-inputs {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* #contact-form .contact-status-message {
-  transition: visibility 0s, opacity 0.5s linear;
-  visibility: hidden;
-  opacity: 0; */
-/* margin: auto auto; */
-/* position: absolute;
-  width: 100%;
-  height: 100%; */
-/* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-/* background-color: var(--dark);
-  border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
-/* 
-#contact-form.success .contact-status-message,
-#contact-form.failure .contact-status-message {
-  visibility: visible;
-  opacity: 1;
-} */
-
-/* #contact-form.success {
-  border-color: green;
-}
-
-#contact-form.failure {
-  border-color: red;
-} */
-
 #contact-form label p {
   margin-top: 0.5em;
 }
-
-/* .contact {
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3rem;
-} */
 
 form.contact {
   margin-top: 1rem;
@@ -550,21 +499,17 @@ form.contact {
   transition: visibility 0s, opacity 0.5s linear;
   position: fixed;
   width: 100%;
-  /* margin-left: calc(var(--padding-lr) * -2); */
-  /* height: 100%; */
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* width: 100%;
-  height: 100%; */
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   box-shadow: rgba(142, 148, 66, 0.15) 0px 4px 24px;
   border-radius: 0.75rem;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   background-color: var(--dark-opaque);
   z-index: 100;
-  border: 1px solid rgba(142, 148, 66, 0.846);
+  /* border: 1px solid rgba(142, 148, 66, 0.846); */
 }
 
 #contact-form.loading #form-sending,
@@ -572,22 +517,6 @@ form.contact {
 #contact-form.failure #form-sending {
   visibility: visible;
   opacity: 1;
-}
-
-/* #contact-form.loading .form-inputs,
-#contact-form.success .form-inputs,
-#contact-form.failure .form-inputs {
-  display: none;
-} */
-
-#contact-form.success #form-sending {
-  box-shadow: rgba(80, 148, 66, 0.15) 0px 4px 24px;
-  border: 1px solid rgba(80, 148, 66, 0.846);
-}
-
-#contact-form.failure #form-sending {
-  box-shadow: rgba(148, 66, 66, 0.15) 0px 4px 24px;
-  border: 1px solid rgba(148, 66, 66, 0.846);
 }
 
 #contact-form div.sending,
