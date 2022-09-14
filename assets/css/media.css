@@ -31,10 +31,6 @@
     top: 0;
     left: 0;
   }
-
-  #alert-container .alert {
-    top: 5%;
-  }
 }
 
 /* TABLET & ABOVE */
@@ -207,12 +203,6 @@
 
   footer .company-details {
     font-size: var(--text-sm);
-  }
-
-  #alert-container .alert {
-    width: 50%;
-
-    margin: auto 25%;
   }
 }
 

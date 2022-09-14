@@ -1,4 +1,5 @@
 const page = window.location;
+// const contactServer = 'http://localhost:3000/contact';
 const contactServer = 'https://contact.speckledbanana.com/contact';
 let currentAlert;
 const formTitle = `<h2>Contact Speckled Banana</h2>`;
@@ -122,7 +123,7 @@ const sendMsg = async () => {
       form.classList.toggle('loading', false);
       form.elements.disabled = false;
       form.classList.toggle('success', true);
-      alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 5000);
+      alertHandler("<p>Message sent.</p><p>We'll be in touch as soon as possible.</p>", 'success', 3000);
     })
     .catch((err) => {
       processErr();

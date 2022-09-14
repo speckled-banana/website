@@ -85,3 +85,20 @@
     opacity: 0;
   }
 }
+
+/* LANDSCAPE PHONE */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  #alert-container .alert {
+    top: 5%;
+  }
+}
+
+/* TABLET & ABOVE */
+
+@media (min-width: 768px) {
+  #alert-container .alert {
+    width: 50%;
+    margin: auto 25%;
+  }
+}
