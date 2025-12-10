@@ -3,9 +3,8 @@ const page = window.location;
 const contactServer = 'https://contact.speckledbanana.com/contact';
 let currentAlert;
 const formTitle = `<h2>Contact Speckled Banana</h2>`;
-const formIntroHTML = `<p>You can send us a message using the contact form below or alternatively reach us directly on:</p>
+const formIntroHTML = `<p>You can send us a message using the contact form below or reach us directly at:</p>
           <p>
-            +44 (0)7934 579448 or
             <a href="mailto:hello@speckledbanana.com">hello@speckledbanana.com</a>.
           </p>
 
@@ -197,8 +196,7 @@ const processErr = () => {
     alertHandler(
       `<p>Sorry, something is still broken.</p>
           <p>
-            <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>
-          <p>Alternatively give us a call on +44 (0)7934 579448</p>`,
+            <a href="mailto:hello@speckledbanana.com?subject=Contact%20Form%20Error!&body=${encodeURIComponent('Contact form error on: ' + page + '\n\n============================================\n\n' + document.getElementById('contact-message').value)}" target="_blank" rel="noopener noreferrer">Click here to open the message in your default email application</a></p>`,
       'failure'
     );
   }
